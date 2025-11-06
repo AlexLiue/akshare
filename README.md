@@ -6,10 +6,10 @@ pip install setuptools
 pip install 
 python setup.py check
 python setup.py sdist bdist_wheel
-
+twine upload dist/*
 
 # API TOKEN
-pypi-BgEIcHlwaS5vcmcCJGY2MjFjODYwLTk3NTAtNGU0MS05ODcyLWFmZTJlNjRjYTJlMQACKlszLCI2OWY0YjE3Ny0zM2Q0LTQzN2ItODg0Yy05NTI2MjlhMWM4MzIiXQAABiDO9B-n37YJ7Q8ac5KSFaRnFloqt6qPnubMCo3yVSafaQ
+pypi-AgEIcHlwaS5vcmcCJGY2MjFjODYwLTk3NTAtNGU0MS05ODcyLWFmZTJlNjRjYTJlMQACKlszLCI2OWY0YjE3Ny0zM2Q0LTQzN2ItODg0Yy05NTI2MjlhMWM4MzIiXQAABiDO9B-n37YJ7Q8ac5KSFaRnFloqt6qPnubMCo3yVSafaQ
 ```
 ## 验证安装
 ```python

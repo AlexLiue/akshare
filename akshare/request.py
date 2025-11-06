@@ -99,7 +99,7 @@ def requests_post(
 
     for attempt in range(max_retries):
         try:
-            response = requests_post(
+            response = requests.post(
                 url, params=params, data=data, json=json, headers=headers, timeout=timeout, proxies=proxies
             )
             if response.status_code == 200:
