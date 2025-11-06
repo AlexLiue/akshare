@@ -28,7 +28,7 @@ def get_version_string() -> str:
 
 
 setuptools.setup(
-    name="akshare",
+    name="akshare-proxy",
     version=get_version_string(),
     author="AKFamily",
     author_email="albertandking@gmail.com",

@@ -1,3 +1,53 @@
+# Akshare Proxies 解决  IP 被限问题
+## 安装
+```
+# 安装python安装工具
+pip install setuptools
+pip install 
+python setup.py check
+python setup.py sdist bdist_wheel
+
+
+# API TOKEN
+pypi-BgEIcHlwaS5vcmcCJGY2MjFjODYwLTk3NTAtNGU0MS05ODcyLWFmZTJlNjRjYTJlMQACKlszLCI2OWY0YjE3Ny0zM2Q0LTQzN2ItODg0Yy05NTI2MjlhMWM4MzIiXQAABiDO9B-n37YJ7Q8ac5KSFaRnFloqt6qPnubMCo3yVSafaQ
+```
+## 验证安装
+```python
+import akshare as ak
+print(ak.__version__)
+```
+
+## 代码更新管理脚本备注
+```
+# 克隆项目
+git clone https://github.com/AlexLiue/akshare.git
+# 查看分支
+git remote -v
+
+# 添加上游仓库地址
+git remote add upstream https://github.com/alibaba/nacos.git
+
+# 合并上游更新到本地项目 （先本地创建合并分支，然后合并）
+git checkout develop-20250401
+git merge upstream/develop
+
+# 提交
+git add .
+git commit -m '20250401'
+
+# 合并更新到主分支
+git checkout main
+git pull origin master
+git merge develop-20250401
+
+# 提交主分支
+git add .
+git commit -m '20250401'
+git tag v0.0.1
+git push  origin master
+```
+
+
 **资源分享**：对于想了解更多财经数据与量化投研的小伙伴，推荐一个专注于财经数据和量化研究的知识社区。
 该社区提供相关文档和视频学习资源，汇集了各类财经数据源和量化投研工具的使用经验。
 有兴趣深入学习的朋友可点此[了解更多](https://t.zsxq.com/ZCxUG)，也推荐大家关注微信公众号【数据科学实战】。
