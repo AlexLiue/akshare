@@ -7,7 +7,7 @@ Desc:中国银行间市场交易商协会(https://www.nafmii.org.cn/)
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def bond_debt_nafmii(page: str = "1") -> pd.DataFrame:
@@ -32,7 +32,7 @@ def bond_debt_nafmii(page: str = "1") -> pd.DataFrame:
         "rows": 50,
     }
     payload.update({"page": page})
-    r = requests.post(url, data=payload)
+    r = requests_post(url, data=payload)
     data_json = r.json()  # 数据类型为 json 格式
     temp_df = pd.DataFrame(data_json["rows"])
     temp_df.rename(

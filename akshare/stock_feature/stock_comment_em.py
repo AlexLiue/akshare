@@ -9,7 +9,7 @@ https://data.eastmoney.com/stockcomment/
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.utils.tqdm import get_tqdm
 
@@ -34,14 +34,14 @@ def stock_comment_em() -> pd.DataFrame:
         "filter": "",
         "token": "894050c76af8597a853f5b408b759f5d",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     total_page = data_json["result"]["pages"]
     big_df = pd.DataFrame()
     tqdm = get_tqdm()
     for page in tqdm(range(1, total_page + 1), leave=False):
         params.update({"pageNumber": page})
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["result"]["data"])
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
@@ -134,7 +134,7 @@ def stock_comment_detail_zlkp_jgcyd_em(symbol: str = "600000") -> pd.DataFrame:
         "sortColumns": "TRADE_DATE",
         "sortTypes": "-1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df = temp_df[["TRADE_DATE", "ORG_PARTICIPATE"]]
@@ -165,7 +165,7 @@ def stock_comment_detail_zhpj_lspf_em(symbol: str = "600000") -> pd.DataFrame:
         "sortColumns": "DIAGNOSE_DATE",
         "sortTypes": "1",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.rename(
@@ -203,7 +203,7 @@ def stock_comment_detail_scrd_focus_em(symbol: str = "600000") -> pd.DataFrame:
         "sortTypes": "-1",
         "pageSize": "30",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.rename(
@@ -237,7 +237,7 @@ def stock_comment_detail_scrd_desire_em(
     data_json = None
     while try_count:
         try:
-            r = requests.get(url)
+            r = requests_get(url)
             data_json = r.json()
             break
         except requests.exceptions.JSONDecodeError:
@@ -292,7 +292,7 @@ def stock_comment_detail_scrd_desire_daily_em(
         "sortTypes": "-1",
         "pageSize": "30",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.rename(

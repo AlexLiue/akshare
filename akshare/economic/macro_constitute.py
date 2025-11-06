@@ -10,7 +10,7 @@ import datetime
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 
@@ -38,7 +38,7 @@ def macro_cons_gold() -> pd.DataFrame:
     }
     big_df = pd.DataFrame()
     while True:
-        r = requests.get(url, params=params, headers=headers)
+        r = requests_get(url, params=params, headers=headers)
         data_json = r.json()
         if not data_json["data"]["values"]:
             break
@@ -103,7 +103,7 @@ def macro_cons_silver() -> pd.DataFrame:
     }
     big_df = pd.DataFrame()
     while True:
-        r = requests.get(url, params=params, headers=headers)
+        r = requests_get(url, params=params, headers=headers)
         data_json = r.json()
         if not data_json["data"]["values"]:
             break
@@ -172,7 +172,7 @@ def macro_cons_opec_month() -> pd.DataFrame:
         "x-csrf-token": "",
         "x-version": "1.0.0",
     }
-    res = requests.get(
+    res = requests_get(
         url=f"https://datacenter-api.jin10.com/reports/dates?category=opec&_={str(int(round(t * 1000)))}",
         headers=headers,
     )  # 日期序列
@@ -180,7 +180,7 @@ def macro_cons_opec_month() -> pd.DataFrame:
     bar = tqdm(reversed(all_date_list))
     for item in bar:
         bar.set_description(f"Please wait for a moment, now downloading {item}'s data")
-        res = requests.get(
+        res = requests_get(
             url=f"https://datacenter-api.jin10.com/reports/list?"
             f"category=opec&date={item}&_={str(int(round(t * 1000)))}",
             headers=headers,

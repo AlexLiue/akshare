@@ -7,7 +7,7 @@ https://emweb.securities.eastmoney.com/PC_HKF10/pages/home/index.html?code=03900
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_hk_growth_comparison_em(symbol: str = "03900") -> pd.DataFrame:
@@ -36,7 +36,7 @@ def stock_hk_growth_comparison_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '03313416193688571'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     field_mapping = {
         'CORRE_SECURITY_CODE': '代码',
@@ -85,7 +85,7 @@ def stock_hk_valuation_comparison_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '03445297742754925'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     field_mapping = {
         'CORRE_SECURITY_CODE': '代码',
@@ -142,7 +142,7 @@ def stock_hk_scale_comparison_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '07839693368708753'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     field_mapping = {
         'CORRE_SECURITY_CODE': '代码',

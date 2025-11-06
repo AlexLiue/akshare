@@ -7,7 +7,7 @@ https://yun.ccxe.com.cn/indices/dei
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def index_pmi_com_cx() -> pd.DataFrame:
@@ -19,7 +19,7 @@ def index_pmi_com_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "com"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "综合PMI", "日期"]
@@ -47,7 +47,7 @@ def index_pmi_man_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "man"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "制造业PMI", "日期"]
@@ -75,7 +75,7 @@ def index_pmi_ser_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "ser"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "服务业PMI", "日期"]
@@ -103,7 +103,7 @@ def index_dei_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "dei"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "数字经济指数", "日期"]
@@ -131,7 +131,7 @@ def index_ii_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "ii"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "产业指数", "日期"]
@@ -159,7 +159,7 @@ def index_si_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "si"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "溢出指数", "日期"]
@@ -187,7 +187,7 @@ def index_fi_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "fi"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "融合指数", "日期"]
@@ -215,7 +215,7 @@ def index_bi_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "bi"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "基础指数", "日期"]
@@ -243,7 +243,7 @@ def index_nei_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "nei"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "中国新经济指数", "日期"]
@@ -271,7 +271,7 @@ def index_li_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "li"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "劳动力投入指数", "日期"]
@@ -299,7 +299,7 @@ def index_ci_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "ci"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "资本投入指数", "日期"]
@@ -327,7 +327,7 @@ def index_ti_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "ti"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "科技投入指数", "日期"]
@@ -355,7 +355,7 @@ def index_neaw_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "neaw"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "新经济行业入职平均工资水平", "日期"]
@@ -383,7 +383,7 @@ def index_awpr_cx() -> pd.DataFrame:
     """
     url = "https://yun.ccxe.com.cn/api/index/pro/cxIndexTrendInfo"
     params = {"type": "awpr"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "新经济入职工资溢价水平", "日期"]
@@ -415,7 +415,7 @@ def index_cci_cx() -> pd.DataFrame:
         "code": "1000050",
         "month": "-1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化值", "大宗商品指数", "日期"]
@@ -447,7 +447,7 @@ def index_qli_cx() -> pd.DataFrame:
         "code": "1000050",
         "month": "-1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化幅度", "高质量因子指数", "日期"]
@@ -479,7 +479,7 @@ def index_ai_cx() -> pd.DataFrame:
         "code": "1000050",
         "month": "-1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化幅度", "AI策略指数", "日期"]
@@ -511,7 +511,7 @@ def index_bei_cx() -> pd.DataFrame:
         "code": "930927",
         "month": "-1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化幅度", "基石经济指数", "日期"]
@@ -543,7 +543,7 @@ def index_neei_cx() -> pd.DataFrame:
         "code": "930928",
         "month": "1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = ["变化幅度", "新动能指数", "日期"]

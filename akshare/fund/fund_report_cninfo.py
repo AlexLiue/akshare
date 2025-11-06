@@ -8,7 +8,7 @@ https://webapi.cninfo.com.cn/#/thematicStatistics
 
 import pandas as pd
 import py_mini_racer
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
 
@@ -60,7 +60,7 @@ def fund_report_stock_cninfo(date: str = "20210630") -> pd.DataFrame:
     params = {
         "rdate": "-".join([date[:4], date[4:6], date[6:]]),
     }
-    r = requests.post(url, headers=headers, params=params)
+    r = requests_post(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.rename(
@@ -127,7 +127,7 @@ def fund_report_industry_allocation_cninfo(date: str = "20210630") -> pd.DataFra
     params = {
         "rdate": "-".join([date[:4], date[4:6], date[6:]]),
     }
-    r = requests.post(url, headers=headers, params=params)
+    r = requests_post(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.rename(
@@ -186,7 +186,7 @@ def fund_report_asset_allocation_cninfo() -> pd.DataFrame:
         "Chrome/93.0.4577.63 Safari/537.36",
         "X-Requested-With": "XMLHttpRequest",
     }
-    r = requests.post(url, headers=headers)
+    r = requests_post(url, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.rename(

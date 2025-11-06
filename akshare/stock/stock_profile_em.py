@@ -7,7 +7,7 @@ https://emweb.securities.eastmoney.com/PC_HKF10/pages/home/index.html?code=03900
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_hk_security_profile_em(symbol: str = "03900") -> pd.DataFrame:
@@ -35,7 +35,7 @@ def stock_hk_security_profile_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '04748497219912483'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['result']['data'])
     field_mapping = {
@@ -99,7 +99,7 @@ def stock_hk_company_profile_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '04748497219912483'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['result']['data'])
     field_mapping = {
@@ -174,7 +174,7 @@ def stock_hk_financial_indicator_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '07945646099062258'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['result']['data'])
     field_mapping = {
@@ -253,7 +253,7 @@ def stock_hk_dividend_payout_em(symbol: str = "03900") -> pd.DataFrame:
         'client': 'PC',
         'v': '035584639294227527'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
 
     field_mapping = {

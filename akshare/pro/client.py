@@ -9,7 +9,7 @@ from functools import partial
 from urllib import parse
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 class DataApi:
@@ -42,7 +42,7 @@ class DataApi:
             "X-Token": self.__token,
         }
         url = parse.urljoin(self.__http_url, "/".join([api_name, *kwargs.values()]))
-        res = requests.get(url, headers=headers, timeout=self.__timeout)
+        res = requests_get(url, headers=headers, timeout=self.__timeout)
         if res.status_code != 200:
             raise Exception("连接异常, 请检查您的Token是否过期和输入的参数是否正确")
         data_json = res.json()

@@ -7,7 +7,7 @@ https://data.eastmoney.com/report/profitforecast.jshtml
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.utils.tqdm import get_tqdm
 
@@ -36,7 +36,7 @@ def stock_profit_forecast_em(symbol: str = "") -> pd.DataFrame:
     }
     if symbol:
         params.update({"filter": f'(INDUSTRY_BOARD="{symbol}")'})
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     page_num = int(data_json["result"]["pages"])
     big_df = pd.DataFrame()
@@ -50,7 +50,7 @@ def stock_profit_forecast_em(symbol: str = "") -> pd.DataFrame:
                 "pageNum": page,
             }
         )
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["result"]["data"])
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)

@@ -9,7 +9,7 @@ https://www.9qihuo.com/qihuoshouxufei
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 
@@ -139,7 +139,7 @@ def _futures_comm_qihuo_process(df: pd.DataFrame, name: str = None) -> pd.DataFr
     common_temp_df["手续费"] = pd.to_numeric(common_temp_df["手续费"])
     common_temp_df["每跳净利"] = pd.to_numeric(common_temp_df["每跳净利"])
     url = "https://www.9qihuo.com/qihuoshouxufei"
-    r = requests.get(url, verify=False)
+    r = requests_get(url, verify=False)
     soup = BeautifulSoup(r.text, features="lxml")
     raw_date_text = soup.find(name="a", attrs={"id": "dlink"}).previous
     comm_update_time = raw_date_text.split("，")[0].strip("（手续费更新时间：")
@@ -164,7 +164,7 @@ def futures_comm_info(symbol: str = "所有") -> pd.DataFrame:
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     url = "https://www.9qihuo.com/qihuoshouxufei"
-    r = requests.get(url, verify=False)
+    r = requests_get(url, verify=False)
     temp_df = pd.read_html(StringIO(r.text))[0]
     temp_df.columns = [
         "合约品种",

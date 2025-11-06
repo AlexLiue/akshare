@@ -9,7 +9,7 @@ https://www.gtjaqh.com/pc/calendar.html
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_rule(date: str = "20231205") -> pd.DataFrame:
@@ -26,7 +26,7 @@ def futures_rule(date: str = "20231205") -> pd.DataFrame:
     urllib3.disable_warnings()
     url = " https://www.gtjaqh.com/pc/calendar"
     params = {"date": f"{date}"}
-    r = requests.get(url, params=params, verify=False)
+    r = requests_get(url, params=params, verify=False)
     big_df = pd.read_html(StringIO(r.text), header=1)[0]
     big_df["交易保证金比例"] = big_df["交易保证金比例"].str.strip("%")
     big_df["交易保证金比例"] = pd.to_numeric(big_df["交易保证金比例"], errors="coerce")

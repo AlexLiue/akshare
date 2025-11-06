@@ -13,10 +13,10 @@ from io import BytesIO
 from typing import List
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.futures import cons
-from akshare.futures.requests_fun import requests_link, pandas_read_html_link
+from akshare.futures.requests_fun from akshare.request import requests_get, requests_post_link, pandas_read_html_link
 from akshare.futures.symbol_var import chinese_to_english
 
 calendar = cons.get_calendar()
@@ -56,7 +56,7 @@ def get_dce_receipt(date: str = None, vars_list: List = cons.contract_symbols):
         "tradeDate": date.strftime("%Y%m%d"),
         "varietyId": "all",
     }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['data']['entityList'])
     records = pd.DataFrame()
@@ -297,7 +297,7 @@ def get_czce_receipt_2(date: str = None, vars_list: List = cons.contract_symbols
         warnings.warn("%s非交易日" % date.strftime("%Y%m%d"))
         return None
     url = cons.CZCE_RECEIPT_URL_2 % (date[:4], date)
-    r = requests.get(url)
+    r = requests_get(url)
     r.encoding = "utf-8"
     data = pd.read_html(r.text)[3:]
     records = pd.DataFrame()
@@ -485,7 +485,7 @@ def get_gfex_receipt(
         "X-Requested-With": "XMLHttpRequest",
         "content-type": "application/x-www-form-urlencoded",
     }
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests_post(url, data=payload, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df = temp_df[temp_df["variety"].str.contains("小计")]

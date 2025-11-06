@@ -9,7 +9,7 @@ https://webapi.cninfo.com.cn/api/stock/p_stock2215
 import numpy as np
 import pandas as pd
 import py_mini_racer
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
 
@@ -72,7 +72,7 @@ def stock_share_change_cninfo(
         "Chrome/93.0.4577.63 Safari/537.36",
         "X-Requested-With": "XMLHttpRequest",
     }
-    r = requests.post(url, params=params, headers=headers)
+    r = requests_post(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     cols_map = {

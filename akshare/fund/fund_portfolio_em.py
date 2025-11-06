@@ -9,7 +9,7 @@ https://fundf10.eastmoney.com/ccmx_000001.html
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.utils import demjson
@@ -35,7 +35,7 @@ def fund_portfolio_hold_em(symbol: str = "000001", date: str = "2024") -> pd.Dat
         "month": "",
         "rt": "0.913877030254846",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     data_json = demjson.decode(data_text[data_text.find("{") : -1])
     soup = BeautifulSoup(data_json["content"], features="lxml")
@@ -119,7 +119,7 @@ def fund_portfolio_bond_hold_em(
         "year": date,
         "rt": "0.913877030254846",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     data_json = demjson.decode(data_text[data_text.find("{") : -1])
     soup = BeautifulSoup(data_json["content"], features="lxml")
@@ -185,7 +185,7 @@ def fund_portfolio_industry_allocation_em(
         "year": date,
         "callback": "jQuery183006997159478989867_1648016188499",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_text = r.text
     data_json = demjson.decode(data_text[data_text.find("{") : -1])
     temp_list = []
@@ -254,7 +254,7 @@ def fund_portfolio_change_em(
         "year": date,
         "rt": "0.913877030254846",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     data_json = demjson.decode(data_text[data_text.find("{") : -1])
     soup = BeautifulSoup(data_json["content"], features="lxml")

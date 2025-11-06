@@ -7,7 +7,7 @@ http://www.dce.com.cn/dalianshangpin/ywfw/ywcs/jycs/hyxxcx/index.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_contract_info_dce() -> pd.DataFrame:
@@ -23,7 +23,7 @@ def futures_contract_info_dce() -> pd.DataFrame:
         "tradeType": "1",
         "varietyId": "all",
     }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['data'])
     temp_df.rename(columns={

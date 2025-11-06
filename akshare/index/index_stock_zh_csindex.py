@@ -7,7 +7,7 @@ https://www.csindex.com.cn/zh-CN/indices/index-detail/H30374#/indices/family/lis
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_zh_index_hist_csindex(
@@ -34,7 +34,7 @@ def stock_zh_index_hist_csindex(
         "startDate": start_date,
         "endDate": end_date,
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.columns = [

@@ -7,7 +7,7 @@ http://www.sse.com.cn/assortment/options/disclo/preinfo/
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def option_current_day_sse() -> pd.DataFrame:
@@ -36,7 +36,7 @@ def option_current_day_sse() -> pd.DataFrame:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/101.0.4951.67 Safari/537.36",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"])
     dict_df = {

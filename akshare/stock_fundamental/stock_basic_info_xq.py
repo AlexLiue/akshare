@@ -7,7 +7,7 @@ https://xueqiu.com/snowman/S/SH601127/detail#/GSJJ
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.utils.cons import headers
 
@@ -34,7 +34,7 @@ def stock_individual_basic_info_xq(
         "symbol": symbol,
     }
     headers.update({"cookie": f"xq_a_token={xq_a_token};"})
-    r = requests.get(url, params=params, headers=headers, timeout=timeout)
+    r = requests_get(url, params=params, headers=headers, timeout=timeout)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.reset_index(inplace=True)
@@ -64,7 +64,7 @@ def stock_individual_basic_info_us_xq(
         "symbol": symbol,
     }
     headers.update({"cookie": f"xq_a_token={xq_a_token};"})
-    r = requests.get(url, params=params, headers=headers, timeout=timeout)
+    r = requests_get(url, params=params, headers=headers, timeout=timeout)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.reset_index(inplace=True)
@@ -94,7 +94,7 @@ def stock_individual_basic_info_hk_xq(
         "symbol": symbol,
     }
     headers.update({"cookie": f"xq_a_token={xq_a_token};"})
-    r = requests.get(url, params=params, headers=headers, timeout=timeout)
+    r = requests_get(url, params=params, headers=headers, timeout=timeout)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.reset_index(inplace=True)

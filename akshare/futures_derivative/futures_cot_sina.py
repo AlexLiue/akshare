@@ -9,7 +9,7 @@ https://vip.stock.finance.sina.com.cn/q/view/vFutures_Positions_cjcc.php
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_hold_pos_sina(
@@ -30,7 +30,7 @@ def futures_hold_pos_sina(
     date = "-".join([date[:4], date[4:6], date[6:]])
     url = "https://vip.stock.finance.sina.com.cn/q/view/vFutures_Positions_cjcc.php"
     params = {"t_breed": contract, "t_date": date}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     if symbol == "成交量":
         temp_df = pd.read_html(StringIO(r.text))[2].iloc[:-1, :]
         temp_df["名次"] = pd.to_numeric(temp_df["名次"], errors="coerce")

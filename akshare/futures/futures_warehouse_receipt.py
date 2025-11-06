@@ -17,7 +17,7 @@ import re
 from io import BytesIO, StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_warehouse_receipt_czce(date: str = "20251103") -> dict:
@@ -39,7 +39,7 @@ def futures_warehouse_receipt_czce(date: str = "20251103") -> dict:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                       "Chrome/83.0.4103.116 Safari/537.36"
     }
-    r = requests.get(url, verify=False, headers=headers)
+    r = requests_get(url, verify=False, headers=headers)
     temp_df = pd.read_excel(BytesIO(r.content))
     index_list = temp_df[temp_df.iloc[:, 0].str.find("品种") == 0.0].index.to_list()
     index_list.append(len(temp_df))
@@ -71,7 +71,7 @@ def futures_warehouse_receipt_dce(date: str = "20251027") -> pd.DataFrame:
         "tradeDate": date,
         "varietyId": "all",
     }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['data']['entityList'])
     temp_df.rename(columns={
@@ -110,7 +110,7 @@ def futures_shfe_warehouse_receipt(date: str = "20200702") -> dict:
     }
     url = f"https://www.shfe.com.cn/data/tradedata/future/dailydata/{date}dailystock.dat"
     if date >= "20140519":
-        r = requests.get(url, headers=headers)
+        r = requests_get(url, headers=headers)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["o_cursor"])
         temp_df["VARNAME"] = temp_df["VARNAME"].str.split(r"$", expand=True).iloc[:, 0]
@@ -123,7 +123,7 @@ def futures_shfe_warehouse_receipt(date: str = "20200702") -> dict:
             big_dict[item] = temp_df[temp_df["VARNAME"] == item]
     else:
         url = f"https://www.shfe.com.cn/data/tradedata/future/dailydata/{date}dailystock.html"
-        r = requests.get(url, headers=headers)
+        r = requests_get(url, headers=headers)
         temp_df = pd.read_html(StringIO(r.text))[0]
         index_list = temp_df[
             temp_df.iloc[:, 3].str.contains("单位：") == 1
@@ -163,7 +163,7 @@ def futures_gfex_warehouse_receipt(date: str = "20240122") -> dict:
                       "Chrome/83.0.4103.116 Safari/537.36"
     }
     payload = {"gen_date": date}
-    r = requests.post(url=url, data=payload, headers=headers)
+    r = requests_post(url=url, data=payload, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     symbol_list = list(

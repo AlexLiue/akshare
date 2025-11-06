@@ -7,7 +7,7 @@ https://fund.eastmoney.com/data/fundfenhong.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 
@@ -28,13 +28,13 @@ def fund_fh_em() -> pd.DataFrame:
         "ftype": "",
         "year": "",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     total_page = eval(data_text[data_text.find("=") + 1 : data_text.find(";")])[0]
     big_df = pd.DataFrame()
     for page in tqdm(range(1, total_page + 1), leave=False):
         params.update({"page": page})
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_text = r.text
         temp_list = eval(
             data_text[data_text.find("[[") : data_text.find(";var jjfh_jjgs")]
@@ -80,13 +80,13 @@ def fund_cf_em() -> pd.DataFrame:
         "ftype": "",
         "year": "",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     total_page = eval(data_text[data_text.find("=") + 1 : data_text.find(";")])[0]
     big_df = pd.DataFrame()
     for page in tqdm(range(1, total_page + 1), leave=False):
         params.update({"page": page})
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_text = r.text
         temp_str = data_text[data_text.find("[[") : data_text.find(";var jjcf_jjgs")]
         if temp_str:
@@ -130,13 +130,13 @@ def fund_fh_rank_em() -> pd.DataFrame:
         "ftype": "",
         "year": "",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     total_page = eval(data_text[data_text.find("=") + 1 : data_text.find(";")])[0]
     big_df = pd.DataFrame()
     for page in tqdm(range(1, total_page + 1), leave=False):
         params.update({"page": page})
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_text = r.text
         temp_list = eval(
             data_text[data_text.find("[[") : data_text.find(";var fhph_jjgs")]

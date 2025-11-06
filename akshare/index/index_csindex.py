@@ -9,7 +9,7 @@ import warnings
 from io import BytesIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def index_csindex_all() -> pd.DataFrame:
@@ -50,7 +50,7 @@ def index_csindex_all() -> pd.DataFrame:
             "undefined": None
         }
     }
-    r = requests.post(url, json=playloads, headers=headers)
+    r = requests_post(url, json=playloads, headers=headers)
 
     temp_df = pd.read_excel(BytesIO(r.content))
     temp_df["基日"] = pd.to_datetime(

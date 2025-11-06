@@ -7,7 +7,7 @@ http://data.eastmoney.com/other/qsjy.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_qsjy_em(date: str = "20200731") -> pd.DataFrame:
@@ -31,7 +31,7 @@ def stock_qsjy_em(date: str = "20200731") -> pd.DataFrame:
         "client": "WEB",
         "filter": f"(END_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.columns = [

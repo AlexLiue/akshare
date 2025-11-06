@@ -6,7 +6,7 @@ Desc: 全部A股-等权重市盈率、中位数市盈率
 https://www.legulegu.com/stockdata/a-ttm-lyr
 """
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.stock_feature.stock_a_indicator import get_token_lg, get_cookie_csrf
 

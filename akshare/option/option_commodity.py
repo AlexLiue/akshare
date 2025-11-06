@@ -19,7 +19,7 @@ import warnings
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.option.cons import (
     get_calendar,
@@ -78,7 +78,7 @@ def option_hist_dce(
         "tradeType": "2",
         "varietyId": f"{option_code_map[symbol]}",
     }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.rename(
@@ -203,7 +203,7 @@ def option_hist_czce(
     if day > datetime.date(year=2010, month=8, day=24):
         url = CZCE_DAILY_OPTION_URL_3.format(day.strftime("%Y"), day.strftime("%Y%m%d"))
         try:
-            r = requests.get(url)
+            r = requests_get(url)
             f = StringIO(r.text)
             table_df = pd.read_table(f, encoding="utf-8", skiprows=1, sep="|")
             table_df.columns = [
@@ -380,7 +380,7 @@ def option_hist_shfe(
     if day > datetime.date(year=2010, month=8, day=24):
         url = f"""https://www.shfe.com.cn/data/tradedata/option/dailydata/kx{day.strftime("%Y%m%d")}.dat"""
         try:
-            r = requests.get(url, headers=SHFE_HEADERS)
+            r = requests_get(url, headers=SHFE_HEADERS)
             json_data = r.json()
             table_df = pd.DataFrame(
                 [
@@ -459,7 +459,7 @@ def option_vol_shfe(
     if day > datetime.date(year=2010, month=8, day=24):
         url = f"""https://www.shfe.com.cn/data/tradedata/option/dailydata/kx{day.strftime("%Y%m%d")}.dat"""
         try:
-            r = requests.get(url, headers=SHFE_HEADERS)
+            r = requests_get(url, headers=SHFE_HEADERS)
             json_data = r.json()
             volatility_df = pd.DataFrame(json_data["o_cursigma"])
             volatility_df = volatility_df[
@@ -528,7 +528,7 @@ def option_hist_gfex(symbol: str = "工业硅", trade_date: str = "20230724") ->
         "X-Requested-With": "XMLHttpRequest",
         "content-type": "application/x-www-form-urlencoded",
     }
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests_post(url, data=payload, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.rename(
@@ -620,7 +620,7 @@ def option_vol_gfex(symbol: str = "碳酸锂", trade_date: str = "20230724"):
         "X-Requested-With": "XMLHttpRequest",
         "content-type": "application/x-www-form-urlencoded",
     }
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests_post(url, data=payload, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"])
     temp_df.rename(

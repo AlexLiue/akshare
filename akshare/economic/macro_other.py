@@ -8,7 +8,7 @@ Desc: 金十数据-其他-加密货币实时行情
 from datetime import datetime
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def crypto_js_spot() -> pd.DataFrame:
@@ -25,7 +25,7 @@ def crypto_js_spot() -> pd.DataFrame:
         "x-csrf-token": "x-csrf-token",
         "x-version": "1.0.0",
     }
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     data_json = r.json()
     data_df = pd.DataFrame(data_json["data"])
     data_df["reported_at"] = pd.to_datetime(data_df["reported_at"])
@@ -92,7 +92,7 @@ def macro_fx_sentiment(
         "x-csrf-token": "",
         "x-version": "1.0.0",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["values"]).T
     temp_df.reset_index(inplace=True)

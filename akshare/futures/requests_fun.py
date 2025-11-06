@@ -10,7 +10,7 @@ import time
 from typing import Dict
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def requests_link(
@@ -33,11 +33,11 @@ def requests_link(
     while True:
         try:
             if method == "get":
-                r = requests.get(url, timeout=20, headers=headers)
+                r = requests_get(url, timeout=20, headers=headers)
                 r.encoding = encoding
                 return r
             elif method == "post":
-                r = requests.post(url, timeout=20, data=data, headers=headers)
+                r = requests_post(url, timeout=20, data=data, headers=headers)
                 r.encoding = encoding
                 return r
             else:
@@ -70,12 +70,12 @@ def pandas_read_html_link(
     while True:
         try:
             if method == "get":
-                r = requests.get(url, timeout=20)
+                r = requests_get(url, timeout=20)
                 r.encoding = encoding
                 r = pd.read_html(StringIO(r.text), encoding=encoding)
                 return r
             elif method == "post":
-                r = requests.post(url, timeout=20, data=data, headers=headers)
+                r = requests_post(url, timeout=20, data=data, headers=headers)
                 r.encoding = encoding
                 r = pd.read_html(StringIO(r.text), encoding=encoding)
                 return r

@@ -12,7 +12,7 @@ https://quote.eastmoney.com/center/gridlist.html#st_board
 import math
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.utils.func import fetch_paginated_data
 
@@ -296,7 +296,7 @@ def stock_zh_a_new() -> pd.DataFrame:
     """
     url = "https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeStockCount"
     params = {"node": "new_stock"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     total_page = math.ceil(int(r.json()) / 80)
     url = "https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData"
     big_df = pd.DataFrame()
@@ -310,7 +310,7 @@ def stock_zh_a_new() -> pd.DataFrame:
             "symbol": "",
             "_s_r_a": "page",
         }
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         r.encoding = "gb2312"
         data_json = r.json()
         temp_df = pd.DataFrame(data_json)

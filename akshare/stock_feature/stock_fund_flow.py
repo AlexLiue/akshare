@@ -16,7 +16,7 @@ https://data.10jqka.com.cn/funds/ddzz/#refCountId=data_55f13c2c_254
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 import py_mini_racer
 from akshare.utils.tqdm import get_tqdm
@@ -66,7 +66,7 @@ def stock_fund_flow_individual(symbol: str = "即时") -> pd.DataFrame:
         "X-Requested-With": "XMLHttpRequest",
     }
     url = "http://data.10jqka.com.cn/funds/ggzjl/field/code/order/desc/ajax/1/free/1/"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     raw_page = soup.find(name="span", attrs={"class": "page_info"}).text
     page_num = raw_page.split("/")[1]
@@ -101,7 +101,7 @@ def stock_fund_flow_individual(symbol: str = "即时") -> pd.DataFrame:
             "Chrome/90.0.4430.85 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest",
         }
-        r = requests.get(url.format(page), headers=headers)
+        r = requests_get(url.format(page), headers=headers)
         temp_df = pd.read_html(StringIO(r.text))[0]
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
 
@@ -164,7 +164,7 @@ def stock_fund_flow_concept(symbol: str = "即时") -> pd.DataFrame:
     url = (
         "http://data.10jqka.com.cn/funds/gnzjl/field/tradezdf/order/desc/ajax/1/free/1/"
     )
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     raw_page = soup.find(name="span", attrs={"class": "page_info"}).text
     page_num = raw_page.split("/")[1]
@@ -199,7 +199,7 @@ def stock_fund_flow_concept(symbol: str = "即时") -> pd.DataFrame:
             "Chrome/90.0.4430.85 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest",
         }
-        r = requests.get(url.format(page), headers=headers)
+        r = requests_get(url.format(page), headers=headers)
         temp_df = pd.read_html(StringIO(r.text))[0]
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
 
@@ -270,7 +270,7 @@ def stock_fund_flow_industry(symbol: str = "即时") -> pd.DataFrame:
     url = (
         "http://data.10jqka.com.cn/funds/hyzjl/field/tradezdf/order/desc/ajax/1/free/1/"
     )
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     raw_page = soup.find(name="span", attrs={"class": "page_info"}).text
     page_num = raw_page.split("/")[1]
@@ -305,7 +305,7 @@ def stock_fund_flow_industry(symbol: str = "即时") -> pd.DataFrame:
             "Chrome/90.0.4430.85 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest",
         }
-        r = requests.get(url.format(page), headers=headers)
+        r = requests_get(url.format(page), headers=headers)
         temp_df = pd.read_html(StringIO(r.text))[0]
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
 
@@ -372,7 +372,7 @@ def stock_fund_flow_big_deal() -> pd.DataFrame:
         "X-Requested-With": "XMLHttpRequest",
     }
     url = "http://data.10jqka.com.cn/funds/ddzz/order/desc/ajax/1/free/1/"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     raw_page = soup.find(name="span", attrs={"class": "page_info"}).text
     page_num = raw_page.split("/")[1]
@@ -398,7 +398,7 @@ def stock_fund_flow_big_deal() -> pd.DataFrame:
             "Chrome/90.0.4430.85 Safari/537.36",
             "X-Requested-With": "XMLHttpRequest",
         }
-        r = requests.get(url.format(page), headers=headers)
+        r = requests_get(url.format(page), headers=headers)
         temp_df = pd.read_html(StringIO(r.text))[0]
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)
 

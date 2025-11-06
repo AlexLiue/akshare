@@ -8,7 +8,7 @@ https://webapi.cninfo.com.cn/#/dataBrowse
 
 import pandas as pd
 import py_mini_racer
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
 
@@ -70,7 +70,7 @@ def stock_allotment_cninfo(
         "Referer": "https://webapi.cninfo.com.cn/",
         "X-Requested-With": "XMLHttpRequest",
     }
-    r = requests.post(url, params=params, headers=headers)
+    r = requests_post(url, params=params, headers=headers)
     data_json = r.json()
     columns = [
         "记录标识",

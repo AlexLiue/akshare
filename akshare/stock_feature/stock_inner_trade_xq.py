@@ -7,7 +7,7 @@ https://xueqiu.com/hq/insider
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_inner_trade_xq() -> pd.DataFrame:
@@ -42,7 +42,7 @@ def stock_inner_trade_xq() -> pd.DataFrame:
         "Chrome/100.0.4896.127 Safari/537.36",
         "X-Requested-With": "XMLHttpRequest",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["items"])
     temp_df.columns = [

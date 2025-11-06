@@ -10,7 +10,7 @@ import zipfile
 from io import BytesIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def index_all_cni() -> pd.DataFrame:
@@ -26,7 +26,7 @@ def index_all_cni() -> pd.DataFrame:
         "rows": "2000",
         "pageNum": "1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["rows"])
     temp_df.columns = [
@@ -100,7 +100,7 @@ def index_hist_cni(
         "endDate": end_date,
         "frequency": "day",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["data"])
     temp_df.columns = [
@@ -156,7 +156,7 @@ def index_detail_cni(symbol: str = "399001", date: str = "202404") -> pd.DataFra
     """
     url = "http://www.cnindex.com.cn/sample-detail/download"
     params = {"indexcode": symbol, "dateStr": "-".join([date[:4], date[4:]])}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     temp_df = pd.read_excel(BytesIO(r.content))
     temp_df["样本代码"] = temp_df["样本代码"].astype(str).str.zfill(6)
     temp_df.columns = [
@@ -191,7 +191,7 @@ def index_detail_hist_cni(symbol: str = "399001", date: str = "") -> pd.DataFram
             "pageNum": "1",
             "rows": "50000",
         }
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["data"]["rows"])
         temp_df.columns = [
@@ -219,7 +219,7 @@ def index_detail_hist_cni(symbol: str = "399001", date: str = "") -> pd.DataFram
     else:
         url = "http://www.cnindex.com.cn/sample-detail/download-history"
         params = {"indexcode": symbol}
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         temp_df = pd.read_excel(BytesIO(r.content))
     temp_df["样本代码"] = temp_df["样本代码"].astype(str).str.zfill(6)
     temp_df.columns = [
@@ -246,7 +246,7 @@ def index_detail_hist_adjust_cni(symbol: str = "399005") -> pd.DataFrame:
     """
     url = "http://www.cnindex.com.cn/sample-detail/download-adjustment"
     params = {"indexcode": symbol}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     try:
         import warnings
 

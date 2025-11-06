@@ -6,7 +6,7 @@ Desc: 中国债券信息网-中债指数-中债指数族系-总指数-综合类�
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def bond_new_composite_index_cbond(
@@ -72,7 +72,7 @@ def bond_new_composite_index_cbond(
         "": "",  # noqa: F601
         "locale": "",
     }
-    r = requests.post(url, params=params)
+    r = requests_post(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame.from_dict(
         data_json[f"{indicator_map[indicator]}_{period_map[period]}"],
@@ -149,7 +149,7 @@ def bond_composite_index_cbond(
         "": "",  # noqa: F601
         "locale": "",
     }
-    r = requests.post(url, params=params)
+    r = requests_post(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame.from_dict(
         data_json[f"{indicator_map[indicator]}_{period_map[period]}"],

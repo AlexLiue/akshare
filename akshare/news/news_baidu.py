@@ -7,7 +7,7 @@ https://gushitong.baidu.com/calendar
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def news_economic_baidu(date: str = "20241107") -> pd.DataFrame:
@@ -29,7 +29,7 @@ def news_economic_baidu(date: str = "20241107") -> pd.DataFrame:
         "cate": "economic_data",
         "finClientType": "pc",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     for item in data_json["Result"]:
@@ -91,7 +91,7 @@ def news_trade_notify_suspend_baidu(date: str = "20241107") -> pd.DataFrame:
         "cate": "notify_suspend",
         "finClientType": "pc",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     for item in data_json["Result"]:
@@ -149,7 +149,7 @@ def news_trade_notify_dividend_baidu(date: str = "20241107") -> pd.DataFrame:
         "rn": 500,
         "pn": 0,
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     for item in data_json["Result"]:
@@ -216,7 +216,7 @@ def news_report_time_baidu(date: str = "20241107") -> pd.DataFrame:
         "cate": "report_time",
         "finClientType": "pc",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     for item in data_json["Result"]:

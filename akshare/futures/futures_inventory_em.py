@@ -7,7 +7,7 @@ https://data.eastmoney.com/ifdata/kcsj.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from akshare.futures.cons import futures_inventory_em_symbol_dict
 
 
@@ -30,7 +30,7 @@ def futures_inventory_em(symbol: str = "a") -> pd.DataFrame:
         "source": "WEB",
         "client": "WEB",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     symbol_dict = dict(zip(temp_df["TRADE_TYPE"], temp_df["TRADE_CODE"]))
@@ -51,7 +51,7 @@ def futures_inventory_em(symbol: str = "a") -> pd.DataFrame:
         "source": "WEB",
         "client": "WEB",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.columns = ["-", "日期", "库存", "增减"]

@@ -7,7 +7,7 @@ https://www.sse.com.cn/market/othersdata/margin/sum/
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_margin_ratio_pa(date: str = "20231013") -> pd.DataFrame:
@@ -33,7 +33,7 @@ def stock_margin_ratio_pa(date: str = "20231013") -> pd.DataFrame:
         "requestId": "194055910e2075c03e25fabf6ffc5a7f",
         "channel": "pa18",
     }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["list"])
     temp_df.rename(
@@ -89,7 +89,7 @@ def stock_margin_sse(
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/88.0.4324.150 Safari/537.36",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"])
     temp_df.columns = [
@@ -156,7 +156,7 @@ def stock_margin_detail_sse(date: str = "20230922") -> pd.DataFrame:
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/88.0.4324.150 Safari/537.36",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"])
     temp_df.columns = [

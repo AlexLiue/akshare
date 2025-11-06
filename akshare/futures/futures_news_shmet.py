@@ -7,7 +7,7 @@ https://www.shmet.com/newsFlash/newsFlash.html?searchKeyword=
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_news_shmet(symbol: str = "全部") -> pd.DataFrame:
@@ -42,7 +42,7 @@ def futures_news_shmet(symbol: str = "全部") -> pd.DataFrame:
             "content": "",
             "flashTag": symbol_map[symbol],
         }
-    r = requests.post(url, json=payload)
+    r = requests_post(url, json=payload)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["dataList"])
     temp_df.columns = [

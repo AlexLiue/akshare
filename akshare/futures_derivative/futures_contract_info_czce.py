@@ -9,7 +9,7 @@ http://www.czce.com.cn/cn/jysj/cksj/H770322index_1.htm
 import xml.etree.ElementTree as ET
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def futures_contract_info_czce(date: str = "20240228") -> pd.DataFrame:
@@ -29,7 +29,7 @@ def futures_contract_info_czce(date: str = "20240228") -> pd.DataFrame:
         "Host": "www.czce.com.cn",
     }
     url = f"http://www.czce.com.cn/cn/DFSStaticFiles/Future/{date[:4]}/{date}/FutureDataReferenceData.xml"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     xml_data = r.text
     # 解析 XML
     tree = ET.ElementTree(ET.fromstring(xml_data))

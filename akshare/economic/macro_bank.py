@@ -22,7 +22,7 @@ import datetime
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def __get_interest_rate_data(attr_id: str, name: str = "利率") -> pd.DataFrame:
@@ -57,7 +57,7 @@ def __get_interest_rate_data(attr_id: str, name: str = "利率") -> pd.DataFrame
     interest_rate_data = []
     try:
         while True:
-            response = requests.get(
+            response = requests_get(
                 url=base_url, params=params, headers=headers, timeout=10
             )
             data = response.json()

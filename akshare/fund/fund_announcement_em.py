@@ -9,7 +9,7 @@ https://fundf10.eastmoney.com/jjgg_000001.html
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def fund_announcement_dividend_em(symbol: str = "000001") -> pd.DataFrame:
@@ -34,7 +34,7 @@ def fund_announcement_dividend_em(symbol: str = "000001") -> pd.DataFrame:
         "type": "2",
         "_": round(time.time() * 1000),
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["Data"])
     temp_df.columns = [
@@ -75,7 +75,7 @@ def fund_announcement_report_em(symbol: str = "000001") -> pd.DataFrame:
         "type": "3",
         "_": round(time.time() * 1000),
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["Data"])
     temp_df.columns = [
@@ -115,7 +115,7 @@ def fund_announcement_personnel_em(symbol: str = "000001") -> pd.DataFrame:
         "type": "4",
         "_": round(time.time() * 1000),
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["Data"])
     temp_df.columns = [

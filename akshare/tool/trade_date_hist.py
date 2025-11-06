@@ -10,7 +10,7 @@ https://finance.sina.com.cn/realstock/company/klc_td_sh.txt
 import datetime
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 from akshare.stock.cons import hk_js_decode
@@ -24,7 +24,7 @@ def tool_trade_date_hist_sina() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = "https://finance.sina.com.cn/realstock/company/klc_td_sh.txt"
-    r = requests.get(url)
+    r = requests_get(url)
     js_code = py_mini_racer.MiniRacer()
     js_code.eval(hk_js_decode)
     dict_list = js_code.call("d", r.text.split("=")[1].split(";")[0].replace('"', ""))

@@ -13,7 +13,7 @@ import datetime
 
 import pandas as pd
 import py_mini_racer
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
 
@@ -72,7 +72,7 @@ def stock_hold_control_cninfo(symbol: str = "全部") -> pd.DataFrame:
     params = {
         "ctype": symbol_map[symbol],
     }
-    r = requests.get(url, headers=headers, params=params)
+    r = requests_get(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [
@@ -143,7 +143,7 @@ def stock_hold_management_detail_cninfo(symbol: str = "增持") -> pd.DataFrame:
         "edate": current_date,
         "varytype": symbol_map[symbol],
     }
-    r = requests.post(url, headers=headers, params=params)
+    r = requests_post(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [
@@ -236,7 +236,7 @@ def stock_hold_change_cninfo(symbol: str = "全部") -> pd.DataFrame:
     params = {
         "market": symbol_map[symbol],
     }
-    r = requests.get(url, headers=headers, params=params)
+    r = requests_get(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [

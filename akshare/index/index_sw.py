@@ -10,7 +10,7 @@ https://legulegu.com/stockdata/index-composition?industryCode=851921.SI
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.utils.cons import headers
@@ -24,7 +24,7 @@ def sw_index_first_info() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = "https://legulegu.com/stockdata/sw-industry-overview"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     code_raw = soup.find(name="div", attrs={"id": "level1Items"}).find_all(
         name="div", attrs={"class": "lg-industries-item-chinese-title"}
@@ -82,7 +82,7 @@ def sw_index_second_info() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = "https://legulegu.com/stockdata/sw-industry-overview"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     code_raw = soup.find(name="div", attrs={"id": "level2Items"}).find_all(
         name="div", attrs={"class": "lg-industries-item-chinese-title"}
@@ -144,7 +144,7 @@ def sw_index_third_info() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = "https://legulegu.com/stockdata/sw-industry-overview"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     soup = BeautifulSoup(r.text, features="lxml")
     code_raw = soup.find(name="div", attrs={"id": "level3Items"}).find_all(
         name="div", attrs={"class": "lg-industries-item-chinese-title"}
@@ -208,7 +208,7 @@ def sw_index_third_cons(symbol: str = "801120.SI") -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = f"https://legulegu.com/stockdata/index-composition?industryCode={symbol}"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     temp_df = pd.read_html(StringIO(r.text))[0]
     temp_df.columns = [
         "序号",

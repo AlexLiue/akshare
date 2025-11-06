@@ -7,7 +7,7 @@ https://data.eastmoney.com/notices/kcb.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 
@@ -28,7 +28,7 @@ def _stock_zh_kcb_report_em_page() -> int:
         "f_node": "0",
         "s_node": "0",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     page_num = int(
         int(data_json["data"]["total_hits"]) / int(data_json["data"]["page_size"])
@@ -62,7 +62,7 @@ def stock_zh_kcb_report_em(from_page: int = 1, to_page: int = 100) -> pd.DataFra
             "f_node": "0",
             "s_node": "0",
         }
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(
             [

@@ -7,7 +7,7 @@ https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=0
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_zh_growth_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
@@ -33,7 +33,7 @@ def stock_zh_growth_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         'client': 'PC',
         'v': '02747607708067783'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
 
     field_mapping = {
@@ -92,7 +92,7 @@ def stock_zh_valuation_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         'client': 'PC',
         'v': '07552428957995401'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
 
     field_mapping = {
@@ -151,7 +151,7 @@ def stock_zh_dupont_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         'client': 'PC',
         'v': '05086361194054821'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
 
     field_mapping = {
@@ -211,7 +211,7 @@ def stock_zh_scale_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         'client': 'PC',
         'v': '005391946600478148'
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
 
     field_mapping = {

@@ -11,7 +11,7 @@ from datetime import datetime
 from hashlib import md5
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.utils.cons import headers
@@ -66,7 +66,7 @@ def stock_hk_indicator_eniu(
     """
     if indicator == "港股":
         url = "https://eniu.com/static/data/stock_list.json"
-        r = requests.get(url, headers=headers)
+        r = requests_get(url, headers=headers)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json)
         temp_df = temp_df[temp_df["stock_id"].str.contains("hk")]
@@ -82,7 +82,7 @@ def stock_hk_indicator_eniu(
         url = f"https://eniu.com/chart/roeh/{symbol}"
     else:
         url = f"https://eniu.com/chart/marketvalueh/{symbol}"
-    r = requests.get(url, headers=headers)
+    r = requests_get(url, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json)
     return temp_df

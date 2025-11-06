@@ -9,7 +9,7 @@ https://so.eastmoney.com/news/s?keyword=603777
 import json
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_news_em(symbol: str = "603777") -> pd.DataFrame:
@@ -30,7 +30,7 @@ def stock_news_em(symbol: str = "603777") -> pd.DataFrame:
         + '"param":{"cmsArticle":{"searchScope":"default","sort":"default","pageIndex":1,'
         + '"pageSize":100,"preTag":"<em>","postTag":"</em>"}}}',
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_text = r.text
     data_json = json.loads(
         data_text.strip("jQuery3510875346244069884_1668256937995(")[:-1]

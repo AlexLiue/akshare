@@ -9,7 +9,7 @@ https://www.chinamoney.com.cn/chinese/bkcurvclosedyhis/?bondType=CYCC000&referen
 from functools import lru_cache
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -114,7 +114,7 @@ def bond_china_close_return_map() -> pd.DataFrame:
     }
     url = "https://www.chinamoney.com.cn/ags/ms/cm-u-bk-currency/ClsYldCurvCurvGO"
     try:
-        r = requests.get(url, headers=headers)
+        r = requests_get(url, headers=headers)
         data_json = r.json()
     except:  # noqa: E722
         session = __bond_register_service()
@@ -161,7 +161,7 @@ def bond_china_close_return(
         "pageNum": "1",
         "pageSize": "50",
     }
-    r = requests.get(url, params=params, headers=headers)
+    r = requests_get(url, params=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     del temp_df["newDateValue"]
@@ -238,7 +238,7 @@ def macro_china_swap_rate(
         "Chrome/107.0.0.0 Safari/537.36",
         "X-Requested-With": "XMLHttpRequest",
     }
-    r = requests.post(url, data=params, headers=headers)
+    r = requests_post(url, data=params, headers=headers)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [
@@ -332,14 +332,14 @@ def macro_china_bond_public() -> pd.DataFrame:
         "pageSize": "10",
         "limit": "1",
     }
-    r = requests.post(url, data=payload, headers=headers)
+    r = requests_post(url, data=payload, headers=headers)
     data_json = r.json()
     total_page = int(data_json["data"]["pageTotalSize"]) + 1
     big_df = pd.DataFrame()
     tqdm = get_tqdm()
     for page in tqdm(range(1, total_page), leave=False):
         payload.update({"pageNo": page})
-        r = requests.post(url, data=payload, headers=headers)
+        r = requests_post(url, data=payload, headers=headers)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["records"])
         big_df = pd.concat(objs=[big_df, temp_df], ignore_index=True)

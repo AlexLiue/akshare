@@ -14,7 +14,7 @@ import time
 from typing import Dict
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_js_weibo_nlp_time() -> Dict:
@@ -42,7 +42,7 @@ def stock_js_weibo_nlp_time() -> Dict:
         "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
 
-    r = requests.get(url, headers=headers, data=payload)
+    r = requests_get(url, headers=headers, data=payload)
     return r.json()["data"]["timescale"]
 
 
@@ -74,7 +74,7 @@ def stock_js_weibo_report(time_period: str = "CNHOUR12") -> pd.DataFrame:
         "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
     }
 
-    r = requests.get(url, params=payload, headers=headers)
+    r = requests_get(url, params=payload, headers=headers)
     temp_df = pd.DataFrame(r.json()["data"])
     temp_df["rate"] = pd.to_numeric(temp_df["rate"])
     return temp_df

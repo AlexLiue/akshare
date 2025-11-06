@@ -7,7 +7,7 @@ https://finance.sina.com.cn/stock/globalindex/quotes/UKX
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.index.cons import index_global_sina_symbol_map
 
@@ -41,7 +41,7 @@ def index_global_hist_sina(symbol: str = "OMX") -> pd.DataFrame:
         "symbol": index_global_sina_symbol_map[symbol],
         "num": "10000",
     }
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.rename(

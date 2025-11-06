@@ -10,7 +10,7 @@ from functools import lru_cache
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 
@@ -20,7 +20,7 @@ def option_comm_symbol() -> pd.DataFrame:
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     url = "https://www.9qihuo.com/qiquanshouxufei"
-    r = requests.get(url, verify=False)
+    r = requests_get(url, verify=False)
     soup = BeautifulSoup(r.text, features="lxml")
     name = [
         item.string.strip()
@@ -53,7 +53,7 @@ def option_comm_info(symbol: str = "工业硅期权") -> pd.DataFrame:
     ].values[0]
     params = {"heyue": symbol_str}
     url = "https://www.9qihuo.com/qiquanshouxufei"
-    r = requests.get(url, params=params, verify=False)
+    r = requests_get(url, params=params, verify=False)
     temp_df = pd.read_html(StringIO(r.text))[0]
     market_symbol = temp_df.iloc[0, 0]
     columns = temp_df.iloc[2, :]

@@ -8,7 +8,7 @@ https://data.eastmoney.com/cjsj/gpkhsj.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def stock_account_statistics_em() -> pd.DataFrame:
@@ -32,7 +32,7 @@ def stock_account_statistics_em() -> pd.DataFrame:
         "pageNum": "1",
         "pageNumber": "1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["result"]["data"])
     temp_df.columns = [

@@ -7,7 +7,7 @@ https://data.eastmoney.com/gphg/hglist.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 
@@ -28,13 +28,13 @@ def stock_repurchase_em() -> pd.DataFrame:
         "columns": "ALL",
         "source": "WEB",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     total_page = data_json["result"]["pages"]
     big_df = pd.DataFrame()
     for page in tqdm(range(1, int(total_page) + 1), leave=False):
         params.update({"pageNumber": page})
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["result"]["data"])
         big_df = pd.concat([big_df, temp_df], ignore_index=True)

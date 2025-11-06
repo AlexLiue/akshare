@@ -10,7 +10,7 @@ import datetime
 from typing import AnyStr
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.futures.cons import (
     QHKC_FUND_BS_URL,
@@ -92,7 +92,7 @@ def get_qhkc_fund_bs(
     date = date[:4] + "-" + date[4:6] + "-" + date[6:]
     print(date)
     payload_id = {"date": date}
-    r = requests.post(url, data=payload_id)
+    r = requests_post(url, data=payload_id)
     print("数据获取成功")
     json_data = r.json()
     symbol_name = []
@@ -190,7 +190,7 @@ def get_qhkc_fund_position(
     date = date[:4] + "-" + date[4:6] + "-" + date[6:]
     print(date)
     payload_id = {"date": date}
-    r = requests.post(url, data=payload_id)
+    r = requests_post(url, data=payload_id)
     print(url)
     print("数据获取成功")
     json_data = r.json()
@@ -289,7 +289,7 @@ def get_qhkc_fund_position_change(
     date = date[:4] + "-" + date[4:6] + "-" + date[6:]
     print(date)
     payload_id = {"date": date}
-    r = requests.post(url, data=payload_id)
+    r = requests_post(url, data=payload_id)
     print(url)
     print("数据获取成功")
     json_data = r.json()
@@ -391,7 +391,7 @@ def get_qhkc_fund_money_change(
     date = date[:4] + "-" + date[4:6] + "-" + date[6:]
     print(date)
     payload_id = {"date": date}
-    r = requests.post(url, data=payload_id)
+    r = requests_post(url, data=payload_id)
     print(url)
     print("数据获取成功")
     json_data = r.json()

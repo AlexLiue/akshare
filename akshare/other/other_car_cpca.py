@@ -7,7 +7,7 @@ http://data.cpcadata.com/FuelMarket
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def car_market_total_cpca(
@@ -25,7 +25,7 @@ def car_market_total_cpca(
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "1"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     if symbol == "狭义乘用车":
@@ -171,7 +171,7 @@ def __car_market_man_rank_cpca_pifa(symbol: str = "狭义乘用车-累计") -> p
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "2"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     if symbol == "狭义乘用车-累计":
@@ -286,7 +286,7 @@ def __car_market_man_rank_cpca_lingshou(
     """
     url = "http://data.cpcadata.com/api/chartlist_2"
     params = {"charttype": "2"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     if symbol == "狭义乘用车-累计":
@@ -420,7 +420,7 @@ def __car_market_cate_cpca_pifa(symbol: str = "MPV") -> pd.DataFrame:
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "3"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     if symbol == "MPV":
@@ -538,7 +538,7 @@ def __car_market_cate_cpca_lingshou(
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "3"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     big_df = pd.DataFrame()
     if symbol == "MPV":
@@ -671,7 +671,7 @@ def car_market_country_cpca() -> pd.DataFrame:
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "4"}
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json[0]["dataList"])
     for item in temp_df.columns[1:]:
@@ -693,7 +693,7 @@ def car_market_segment_cpca(symbol: str = "轿车") -> pd.DataFrame:
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "5"}
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     if symbol == "MPV":
         temp_df = pd.DataFrame(data_json[0]["dataList"])
@@ -730,7 +730,7 @@ def car_market_fuel_cpca(symbol: str = "整体市场") -> pd.DataFrame:
     """
     url = "http://data.cpcadata.com/api/chartlist"
     params = {"charttype": "6"}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     if symbol == "整体市场":
         temp_df = pd.DataFrame(data_json[0]["dataList"])

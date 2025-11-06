@@ -7,7 +7,7 @@ https://www.chinascope.com/reasearch.html
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def index_news_sentiment_scope() -> pd.DataFrame:
@@ -19,7 +19,7 @@ def index_news_sentiment_scope() -> pd.DataFrame:
     """
     url = "https://www.chinascope.com/inews/senti/index"
     params = {"period": "YEAR"}
-    r = requests.get(url=url, params=params)
+    r = requests_get(url=url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json)
     temp_df.rename(

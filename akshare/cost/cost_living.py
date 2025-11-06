@@ -9,7 +9,7 @@ https://expatistan.com/cost-of-living/index
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 
@@ -20,7 +20,7 @@ def _get_region() -> dict:
     :rtype: dict
     """
     url = "https://www.expatistan.com/cost-of-living/index"
-    r = requests.get(url)
+    r = requests_get(url)
     soup = BeautifulSoup(r.text, features="lxml")
     half_url_list = [
         item["href"]
@@ -56,7 +56,7 @@ def cost_living(symbol: str = "world") -> pd.DataFrame:
         "world": "/cost-of-living/index",
     }
     url = f"https://www.expatistan.com{name_url_map[symbol]}"
-    r = requests.get(url)
+    r = requests_get(url)
     temp_df = pd.read_html(StringIO(r.text))[0]
     temp_df.columns = ["rank", "city", "index"]
     return temp_df

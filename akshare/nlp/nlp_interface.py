@@ -8,7 +8,7 @@ https://www.ownthink.com/docs/kg/
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 
 def nlp_ownthink(word: str = "人工智能", indicator: str = "entity") -> pd.DataFrame:
@@ -26,7 +26,7 @@ def nlp_ownthink(word: str = "人工智能", indicator: str = "entity") -> pd.Da
     payload = {
         "entity": word,
     }
-    r = requests.post(url, data=payload)
+    r = requests_post(url, data=payload)
     if not r.json()["data"]:
         print("Can not find the resource, please type into the correct word")
         return pd.DataFrame()
@@ -51,7 +51,7 @@ def nlp_answer(question: str = "人工智能") -> str:
     """
     url = "https://api.ownthink.com/bot"
     params = {"spoken": question}
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     json_data = r.json()
     answer = json_data["data"]["info"]["text"]
     return answer

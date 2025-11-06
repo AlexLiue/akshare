@@ -7,7 +7,7 @@ http://www.kqindex.cn/flzs/jiage
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 
@@ -33,7 +33,7 @@ def index_kq_fz(symbol: str = "价格指数") -> pd.DataFrame:
         "indexType": f"{symbol_map[symbol]}",
         "pageindex": "1",
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     page_num = data_json["page"]
     big_df = pd.DataFrame()
@@ -45,7 +45,7 @@ def index_kq_fz(symbol: str = "价格指数") -> pd.DataFrame:
             "indexType": f"{symbol_map[symbol]}",
             "pageindex": page,
         }
-        r = requests.get(url, params=params)
+        r = requests_get(url, params=params)
         data_json = r.json()
         temp_df = pd.DataFrame(data_json["result"])
         big_df = pd.concat([big_df, temp_df], ignore_index=True)

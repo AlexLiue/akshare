@@ -8,7 +8,7 @@ https://webapi.cninfo.com.cn/#/thematicStatistics
 
 import pandas as pd
 import py_mini_racer
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
 
@@ -60,7 +60,7 @@ def stock_cg_equity_mortgage_cninfo(date: str = "20210930") -> pd.DataFrame:
     params = {
         "tdate": "-".join([date[:4], date[4:6], date[6:]]),
     }
-    r = requests.post(url, headers=headers, params=params)
+    r = requests_post(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [

@@ -10,7 +10,7 @@ import warnings
 from functools import lru_cache
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.utils.tqdm import get_tqdm
@@ -36,7 +36,7 @@ def _fetch_stock_uid() -> dict:
     tqdm = get_tqdm()
     for page in tqdm(range(1, 73), leave=False):
         data.update({"page": page})
-        r = requests.post(url, data=data)
+        r = requests_post(url, data=data)
         data_json = r.json()
         soup = BeautifulSoup(data_json["content"], features="lxml")
         soup.find_all(name="a", attrs={"rel": "tag"})
@@ -76,12 +76,12 @@ def stock_sns_sseinfo(symbol: str = "603119") -> pd.DataFrame:
     warnings.warn("正在下载中")
     while True:
         params.update({"page": page})
-        r = requests.post(url, params=params)
+        r = requests_post(url, params=params)
         if len(r.text) < 300:
             break
         else:
             page += 1
-        r = requests.post(url, params=params)
+        r = requests_post(url, params=params)
         soup = BeautifulSoup(r.text, features="lxml")
         content_list = [
             item.get_text().strip()

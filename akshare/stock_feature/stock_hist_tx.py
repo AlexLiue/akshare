@@ -9,7 +9,7 @@ https://quote.eastmoney.com/
 import datetime
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.index.index_stock_zh import get_tx_start_year
 from akshare.utils import demjson
@@ -56,7 +56,7 @@ def stock_zh_a_hist_tx(
             "param": f"{symbol},day,{year}-01-01,{year + 1}-12-31,640,{adjust}",
             "r": "0.8205512681390605",
         }
-        r = requests.get(url, params=params, timeout=timeout)
+        r = requests_get(url, params=params, timeout=timeout)
         data_text = r.text
         data_json = demjson.decode(data_text[data_text.find("={") + 1 :])["data"][
             symbol

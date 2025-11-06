@@ -7,7 +7,7 @@ https://www.legulegu.com/stockdata/all-pb
 """
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.stock_feature.stock_a_indicator import get_token_lg, get_cookie_csrf
 
@@ -24,7 +24,7 @@ def stock_a_all_pb() -> pd.DataFrame:
         "marketId": "ALL",
         "token": get_token_lg(),
     }
-    r = requests.get(
+    r = requests_get(
         url,
         params=params,
         **get_cookie_csrf(url="https://legulegu.com/stockdata/all-pb"),

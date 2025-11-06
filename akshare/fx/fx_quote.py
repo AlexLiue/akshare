@@ -11,7 +11,7 @@ Desc: 中国外汇交易中心暨全国银行间同业拆借中心-市场数据-
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 
 from akshare.fx.cons import (
     SHORT_HEADERS,
@@ -29,7 +29,7 @@ def fx_spot_quote() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     payload = {"t": str(int(round(time.time() * 1000)))}
-    res = requests.post(FX_SPOT_URL, data=payload, headers=SHORT_HEADERS)
+    res = requests_post(FX_SPOT_URL, data=payload, headers=SHORT_HEADERS)
     temp_df = pd.DataFrame(res.json()["records"])
     temp_df = temp_df[["ccyPair", "bidPrc", "askPrc", "midprice", "time"]]
     temp_df.columns = [
@@ -53,7 +53,7 @@ def fx_swap_quote() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     payload = {"t": str(int(round(time.time() * 1000)))}
-    res = requests.post(FX_SWAP_URL, data=payload, headers=SHORT_HEADERS)
+    res = requests_post(FX_SWAP_URL, data=payload, headers=SHORT_HEADERS)
     temp_df = pd.DataFrame(res.json()["records"])
     temp_df = temp_df[
         [
@@ -86,7 +86,7 @@ def fx_pair_quote() -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     payload = {"t": str(int(round(time.time() * 1000)))}
-    res = requests.post(FX_PAIR_URL, data=payload, headers=SHORT_HEADERS)
+    res = requests_post(FX_PAIR_URL, data=payload, headers=SHORT_HEADERS)
     temp_df = pd.DataFrame(res.json()["records"])
     temp_df = temp_df[["ccyPair", "bidPrc", "askPrc", "midprice", "time"]]
     temp_df.columns = [

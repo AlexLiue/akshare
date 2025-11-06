@@ -6,7 +6,7 @@ Desc: 东方财富-A股数据-股本结构
 https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=SH603392&color=b#/gbjg/gbjg
 """
 
-import requests
+from akshare.request import requests_get, requests_post
 import pandas as pd
 
 
@@ -39,7 +39,7 @@ def stock_zh_a_gbjg_em(symbol: str = "603392.SH") -> pd.DataFrame:
         "client": "PC",
         "v": "047483522105257925"
     }
-    r = requests.get(url, params=params)
+    r = requests_get(url, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json['result']['data'])
     temp_df.rename(columns={

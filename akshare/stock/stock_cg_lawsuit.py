@@ -9,7 +9,7 @@ http://webapi.cninfo.com.cn/#/thematicStatistics
 import time
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 js_str = """
@@ -90,7 +90,7 @@ def stock_cg_lawsuit_cninfo(
         "edate": "-".join([end_date[:4], end_date[4:6], end_date[6:]]),
         "market": symbol_map[symbol],
     }
-    r = requests.post(url, headers=headers, params=params)
+    r = requests_post(url, headers=headers, params=params)
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["records"])
     temp_df.columns = [

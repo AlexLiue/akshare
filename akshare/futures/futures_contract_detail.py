@@ -9,7 +9,7 @@ https://finance.sina.com.cn/futures/quotes/V2101.shtml
 from io import StringIO
 
 import pandas as pd
-import requests
+from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 
@@ -23,7 +23,7 @@ def futures_contract_detail(symbol: str = "AP2101") -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = f"https://finance.sina.com.cn/futures/quotes/{symbol}.shtml"
-    r = requests.get(url)
+    r = requests_get(url)
     r.encoding = "gb2312"
     temp_df = pd.read_html(StringIO(r.text))[6]
     data_one = temp_df.iloc[:, :2]
@@ -48,7 +48,7 @@ def futures_contract_detail_em(symbol: str = "v2602F") -> pd.DataFrame:
     :rtype: pandas.DataFrame
     """
     url = f"https://quote.eastmoney.com/qihuo/{symbol}.html"
-    r = requests.get(url)
+    r = requests_get(url)
     soup = BeautifulSoup(r.text, features="lxml")
     url_text = \
         soup.find(name="div", attrs={"class": "sidertabbox_tsplit"}).find(name="div", attrs={"class": "onet"}).find(
@@ -56,7 +56,7 @@ def futures_contract_detail_em(symbol: str = "v2602F") -> pd.DataFrame:
             'href']
     inner_symbol = url_text.split("#")[-1].strip("futures_")
     url = f"https://futsse-static.eastmoney.com/redis?msgid={inner_symbol}_info"
-    r = requests.get(url)
+    r = requests_get(url)
     data_json = r.json()
     temp_df = pd.DataFrame.from_dict(data_json, orient="index")
     column_mapping = {
