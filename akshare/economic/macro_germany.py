@@ -6,6 +6,7 @@ Desc: 东方财富-德国-经济数据
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

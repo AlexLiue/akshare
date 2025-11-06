@@ -7,6 +7,7 @@ https://emweb.eastmoney.com/PC_USF10/pages/index.html?code=TSLA&type=web&color=w
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.utils.cons import headers

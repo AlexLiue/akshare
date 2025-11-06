@@ -9,6 +9,7 @@ https://finance.sina.com.cn/futuremarket/index.shtml
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.futures.cons import (

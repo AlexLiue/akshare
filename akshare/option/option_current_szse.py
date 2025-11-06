@@ -7,6 +7,7 @@ Desc: 深圳证券交易所-期权子网-行情数据-当日合约
 from io import BytesIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

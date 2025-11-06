@@ -9,6 +9,7 @@ https://fundf10.eastmoney.com/jjfl_015641.html
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

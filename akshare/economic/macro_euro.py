@@ -14,6 +14,7 @@ Desc: 金十数据中心-经济指标-欧元区
 import time
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 

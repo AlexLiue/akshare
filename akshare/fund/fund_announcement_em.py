@@ -9,6 +9,7 @@ https://fundf10.eastmoney.com/jjgg_000001.html
 import time
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

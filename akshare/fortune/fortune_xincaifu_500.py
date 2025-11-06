@@ -9,6 +9,7 @@ http://www.xcf.cn/zhuanti/ztzz/hdzt1/500frb/index.html
 import json
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

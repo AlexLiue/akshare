@@ -10,6 +10,7 @@ import math
 from akshare.utils.tqdm import get_tqdm
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

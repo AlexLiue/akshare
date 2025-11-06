@@ -7,6 +7,7 @@ https://emweb.securities.eastmoney.com/PC_HSF10/BusinessAnalysis/Index?type=web&
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

@@ -9,6 +9,7 @@ https://data.eastmoney.com/report/profitforecast.jshtml
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

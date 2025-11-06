@@ -8,6 +8,7 @@ https://vip.stock.finance.sina.com.cn/fund_center/index.html#jjhqetf
 
 import pandas as pd
 import py_mini_racer
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.stock.cons import hk_js_decode

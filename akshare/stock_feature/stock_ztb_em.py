@@ -18,6 +18,7 @@ https://quote.eastmoney.com/ztb/detail#type=ztgc
 from datetime import datetime, timedelta
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

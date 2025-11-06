@@ -12,6 +12,7 @@ import warnings
 from datetime import datetime
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

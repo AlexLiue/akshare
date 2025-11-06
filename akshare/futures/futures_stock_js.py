@@ -8,6 +8,7 @@ https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

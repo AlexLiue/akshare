@@ -13,10 +13,11 @@ from io import BytesIO, StringIO
 
 import numpy as np
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.futures import cons
-from akshare.futures.requests_fun from akshare.request import requests_get, requests_post_link
+from akshare.futures.requests_fun import requests_link
 
 calendar = cons.get_calendar()
 

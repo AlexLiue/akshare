@@ -9,6 +9,7 @@ https://finance.sina.com.cn/futures/quotes/V2101.shtml
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 

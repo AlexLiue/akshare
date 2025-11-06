@@ -8,6 +8,7 @@ Desc: 东方财富-股票-财务分析
 from functools import lru_cache
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 

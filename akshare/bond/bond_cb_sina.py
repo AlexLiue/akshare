@@ -9,6 +9,7 @@ https://money.finance.sina.com.cn/bond/info/sz128039.html
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

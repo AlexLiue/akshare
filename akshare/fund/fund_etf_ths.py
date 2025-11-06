@@ -9,6 +9,7 @@ https://fund.10jqka.com.cn/datacenter/jz/kfs/etf/
 import json
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

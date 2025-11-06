@@ -7,6 +7,7 @@ https://www.shmet.com/newsFlash/newsFlash.html?searchKeyword=
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

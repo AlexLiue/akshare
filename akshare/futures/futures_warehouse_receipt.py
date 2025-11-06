@@ -17,6 +17,7 @@ import re
 from io import BytesIO, StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

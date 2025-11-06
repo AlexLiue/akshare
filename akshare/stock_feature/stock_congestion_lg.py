@@ -7,6 +7,7 @@ https://legulegu.com/stockdata/ashares-congestion
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.stock_feature.stock_a_indicator import get_token_lg, get_cookie_csrf

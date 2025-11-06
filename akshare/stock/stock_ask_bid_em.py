@@ -7,6 +7,7 @@ https://quote.eastmoney.com/sz000001.html
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

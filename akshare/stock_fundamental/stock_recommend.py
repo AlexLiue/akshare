@@ -7,6 +7,7 @@ http://stock.finance.sina.com.cn/stock/go.php/vIR_RatingNewest/index.phtml
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 

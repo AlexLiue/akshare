@@ -12,6 +12,7 @@ Desc: 义乌小商品指数
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

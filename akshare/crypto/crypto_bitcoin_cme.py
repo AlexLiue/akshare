@@ -7,6 +7,7 @@ https://datacenter.jin10.com/reportType/dc_cme_btc_report
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

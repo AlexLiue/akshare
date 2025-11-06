@@ -7,6 +7,7 @@ https://www.csindex.com.cn/zh-CN/indices/index-detail/H30374#/indices/family/lis
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

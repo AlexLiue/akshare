@@ -11,6 +11,7 @@ import math
 import time
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.economic.cons import (

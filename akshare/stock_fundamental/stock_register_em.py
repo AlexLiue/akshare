@@ -7,6 +7,7 @@ https://data.eastmoney.com/kcb/?type=nsb
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.utils.cons import headers

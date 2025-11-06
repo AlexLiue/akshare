@@ -84,7 +84,7 @@ def requests_post(
     :param proxies: 代理设置 (可选)
     :param max_retries: 最大重试次数
     :param retry_delay: 初始重试延迟（秒）
-    :return: request 应答值    
+    :return: request 应答值
     """
     if proxies is None:
         proxies = config.proxies

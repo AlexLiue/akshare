@@ -7,6 +7,7 @@ https://data.eastmoney.com/hsgt/hsgtDetail/scgk.html
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

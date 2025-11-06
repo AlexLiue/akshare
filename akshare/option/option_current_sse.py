@@ -7,6 +7,7 @@ http://www.sse.com.cn/assortment/options/disclo/preinfo/
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

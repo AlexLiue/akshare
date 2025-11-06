@@ -13,10 +13,11 @@ from io import BytesIO
 from typing import List
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.futures import cons
-from akshare.futures.requests_fun from akshare.request import requests_get, requests_post_link, pandas_read_html_link
+from akshare.futures.requests_fun import requests_link, pandas_read_html_link
 from akshare.futures.symbol_var import chinese_to_english
 
 calendar = cons.get_calendar()

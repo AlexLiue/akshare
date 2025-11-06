@@ -6,6 +6,7 @@ Desc: 上海证券交易所-产品-股票期权-期权风险指标
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

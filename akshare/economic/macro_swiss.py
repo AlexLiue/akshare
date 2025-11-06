@@ -7,6 +7,7 @@ http://data.eastmoney.com/cjsj/foreign_2_0.html
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

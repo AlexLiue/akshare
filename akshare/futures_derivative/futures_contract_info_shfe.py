@@ -7,6 +7,7 @@ https://tsite.shfe.com.cn/bourseService/businessdata/summaryinquiry/
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

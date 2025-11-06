@@ -9,6 +9,7 @@ https://www.chinamoney.com.cn/chinese/scsjzqxx/
 import functools
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from akshare.utils.tqdm import get_tqdm
 from akshare.bond.bond_china import bond_china_close_return_map

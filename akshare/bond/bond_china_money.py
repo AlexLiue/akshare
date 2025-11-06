@@ -9,6 +9,7 @@ https://www.chinamoney.com.cn/chinese/bkcurvclosedyhis/?bondType=CYCC000&referen
 from functools import lru_cache
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from akshare.utils.tqdm import get_tqdm
 

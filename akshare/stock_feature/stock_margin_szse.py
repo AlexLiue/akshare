@@ -9,6 +9,7 @@ https://www.szse.cn/disclosure/margin/object/index.html
 import warnings
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

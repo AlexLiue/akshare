@@ -7,6 +7,7 @@ https://webapi.cninfo.com.cn/#/company
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 import py_mini_racer
 

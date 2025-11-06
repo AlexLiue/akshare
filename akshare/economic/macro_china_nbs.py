@@ -13,6 +13,7 @@ from typing import Union, Literal, List, Dict
 import jsonpath as jp
 import numpy as np
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 import urllib3
 from urllib3.exceptions import InsecureRequestWarning

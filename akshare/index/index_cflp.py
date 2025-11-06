@@ -7,6 +7,7 @@ http://index.0256.cn/expx.htm
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

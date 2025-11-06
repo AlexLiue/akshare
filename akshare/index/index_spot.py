@@ -7,6 +7,7 @@ https://finance.sina.com.cn/futuremarket/spotprice.shtml#titlePos_0
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

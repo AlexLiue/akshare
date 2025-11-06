@@ -9,6 +9,7 @@ https://www.100ppi.com/sf/792.html
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 

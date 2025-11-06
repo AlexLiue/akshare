@@ -9,6 +9,7 @@ http://data.eastmoney.com/jgdy/
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 

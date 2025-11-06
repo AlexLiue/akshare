@@ -10,6 +10,7 @@ import re
 
 from akshare.utils import demjson
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 

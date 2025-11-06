@@ -8,6 +8,7 @@ Desc: 金十数据-其他-加密货币实时行情
 from datetime import datetime
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

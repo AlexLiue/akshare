@@ -7,6 +7,7 @@ https://emweb.securities.eastmoney.com/pc_hsf10/pages/index.html?type=web&code=0
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

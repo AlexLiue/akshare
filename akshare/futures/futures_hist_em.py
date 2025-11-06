@@ -11,6 +11,7 @@ from functools import lru_cache
 from typing import Tuple, Dict
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

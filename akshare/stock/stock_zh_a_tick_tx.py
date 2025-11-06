@@ -10,6 +10,7 @@ Desc: 腾讯-股票-实时行情-成交明细
 import warnings
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

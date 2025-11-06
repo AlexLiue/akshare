@@ -9,6 +9,7 @@ http://www.cffex.com.cn/jycs/
 import xml.etree.ElementTree as ET
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

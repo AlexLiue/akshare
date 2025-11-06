@@ -7,6 +7,7 @@ https://quote.eastmoney.com/center/gridlist.html#forex_all
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.forex.cons import symbol_market_map

@@ -8,6 +8,7 @@ Desc: 东方财富-基金
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

@@ -9,6 +9,7 @@ import warnings
 from io import BytesIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

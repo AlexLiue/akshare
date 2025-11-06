@@ -9,6 +9,7 @@ https://quote.eastmoney.com/
 import pandas as pd
 from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.func import fetch_paginated_data
 
 

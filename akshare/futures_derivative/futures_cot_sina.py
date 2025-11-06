@@ -9,6 +9,7 @@ https://vip.stock.finance.sina.com.cn/q/view/vFutures_Positions_cjcc.php
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 

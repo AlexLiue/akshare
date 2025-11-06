@@ -9,6 +9,7 @@ https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.article.cons import ff_home_url

@@ -7,6 +7,7 @@ http://i.gasgoo.com/data/ranking
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.utils import demjson

@@ -16,6 +16,7 @@ https://110.249.223.67/publish
 """
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 

@@ -14,6 +14,7 @@ import re
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 from py_mini_racer import MiniRacer
 

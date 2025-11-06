@@ -10,6 +10,7 @@ from datetime import datetime
 from io import StringIO
 
 import pandas as pd
+import requests
 from akshare.request import requests_get, requests_post
 
 from akshare.futures.futures_hq_sina import (
