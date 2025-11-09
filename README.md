@@ -7,7 +7,8 @@ pip install
 python setup.py check
 python setup.py sdist bdist_wheel
 twine upload dist/*
-
+twine upload --repository testpypi dist/*
+twine upload --repository pypi dist/*
 ```
 ## 验证安装
 ```python
