@@ -48,7 +48,7 @@ git clone https://github.com/AlexLiue/akshare.git
 git remote -v
 
 # 添加上游仓库地址
-git remote add upstream https://github.com/alibaba/nacos.git
+git remote add upstream https://github.com/akfamily/akshare.git
 
 # 合并上游更新到本地项目 （先本地创建合并分支，然后合并）
 git checkout develop-20250401
