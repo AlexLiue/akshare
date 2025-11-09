@@ -9,6 +9,9 @@ python setup.py sdist bdist_wheel
 twine upload dist/*
 twine upload --repository testpypi dist/*
 twine upload --repository pypi dist/*
+
+pip install akshare-proxy==1.17.87.dev0
+
 ```
 ## 验证安装
 ```python
