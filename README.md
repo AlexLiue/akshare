@@ -51,8 +51,9 @@ git remote -v
 git remote add upstream https://github.com/akfamily/akshare.git
 
 # 合并上游更新到本地项目 （先本地创建合并分支，然后合并）
-git checkout develop-20250401
-git merge upstream/develop
+git checkout develop
+git fetch upstream
+git merge upstream/main
 
 # 提交
 git add .
@@ -61,7 +62,7 @@ git commit -m '20250401'
 # 合并更新到主分支
 git checkout main
 git pull origin master
-git merge develop-20250401
+git merge develop
 
 # 提交主分支
 git add .
