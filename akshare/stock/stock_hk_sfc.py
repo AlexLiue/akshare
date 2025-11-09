@@ -81,8 +81,14 @@ def stock_hk_short_sale(
         df["日期"] = pd.to_datetime(df["日期"], format="%d%m%Y").dt.strftime("%Y%m%d")
         df_list.append(df)
 
-    # 日期数据合并
-    return pd.concat(df_list, ignore_index=True)
+    if len(df_list)>0:
+        # 日期数据合并
+        return pd.concat(df_list, ignore_index=True)
+    else:
+        return pd.DataFrame(columns=["日期", "证券代码", "证券简称", "淡仓股数", "淡仓金额"])
+
+
+
 
 
 
