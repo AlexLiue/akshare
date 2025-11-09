@@ -12,6 +12,7 @@ twine upload --repository pypi dist/*
 
 pip install akshare-proxy==1.17.87.dev0
 
+pip install --upgrade --index-url https://test.pypi.org/simple/ akshare-proxy
 ```
 ## 验证安装
 ```python
