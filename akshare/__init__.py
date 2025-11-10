@@ -5482,6 +5482,16 @@ from akshare.stock.stock_us_sina import (
     get_us_stock_name,
 )
 
+
+"""
+东方财富港股信息数据
+"""
+from akshare.stock.stock_hk_em import (
+    stock_hk_short_sale_em,
+    stock_hk_short_sale_em_simple
+)
+
+
 """
 香港证监会公示数据
 """

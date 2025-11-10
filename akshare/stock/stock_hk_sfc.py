@@ -134,11 +134,20 @@ def stock_hk_ccass_records(
     cc = OpenCC("hk2s")
     soup = BeautifulSoup(cc.convert(r.text), "html.parser")
 
-    search_date_div = soup.find("div", class_="search-bar__selectedItem-filter searchDate")
+    search_date_div = soup.find(
+        "div", class_="search-bar__selectedItem-filter searchDate"
+    )
 
     """ 如页面返回内容日期等于搜索日期,则解析页面返回结果, 否则返回空的 DataFrame 对象 """
-    if search_date_div is not None and search_date_div.text.strip()[-10:] == holding_date:
-        stock_info = soup.find("div", class_="search-bar__selectedItem-filter searchStock").text.strip().split(" ")
+    if (
+        search_date_div is not None
+        and search_date_div.text.strip()[-10:] == holding_date
+    ):
+        stock_info = (
+            soup.find("div", class_="search-bar__selectedItem-filter searchStock")
+            .text.strip()
+            .split(" ")
+        )
         stock_symbol = stock_info[0]
         stock_name = stock_info[1]
 
@@ -170,7 +179,15 @@ def stock_hk_ccass_records(
         summary_df["日期"] = date
         summary_df["证券代码"] = stock_symbol
         summary_df["证券简称"] = stock_name
-        summary_columns = ["日期", "证券代码", "证券简称", "持股类型", "持股量", "参数者数", "百分比"]
+        summary_columns = [
+            "日期",
+            "证券代码",
+            "证券简称",
+            "持股类型",
+            "持股量",
+            "参数者数",
+            "百分比",
+        ]
         summary_df = summary_df[summary_columns]
 
         body_divs = soup.find("tbody").find_all("tr")
@@ -198,16 +215,43 @@ def stock_hk_ccass_records(
                 .text.strip()[:-1]
             )
             body_rows.append([participant_id, participant_name, shareholding, percents])
-        body_df = pd.DataFrame(body_rows, columns=["机构编号", "机构名称", "持股量", "百分比"])
+        body_df = pd.DataFrame(
+            body_rows, columns=["机构编号", "机构名称", "持股量", "百分比"]
+        )
         body_df["日期"] = date
         body_df["证券代码"] = stock_symbol
         body_df["证券简称"] = stock_name
-        body_columns = ["日期", "证券代码", "证券简称", "机构编号", "机构名称", "持股量", "百分比"]
+        body_columns = [
+            "日期",
+            "证券代码",
+            "证券简称",
+            "机构编号",
+            "机构名称",
+            "持股量",
+            "百分比",
+        ]
         body_df = body_df[body_columns]
 
         return summary_df, body_df
     else:
-        summary_columns = ["日期", "证券代码", "证券简称", "持股类型", "持股量", "参数者数", "百分比"]
-        body_columns = ["日期", "证券代码", "证券简称", "机构编号", "机构名称", "持股量", "百分比"]
-        return  pd.DataFrame(columns=[summary_columns]), pd.DataFrame(columns=[body_columns])
-
+        summary_columns = [
+            "日期",
+            "证券代码",
+            "证券简称",
+            "持股类型",
+            "持股量",
+            "参数者数",
+            "百分比",
+        ]
+        body_columns = [
+            "日期",
+            "证券代码",
+            "证券简称",
+            "机构编号",
+            "机构名称",
+            "持股量",
+            "百分比",
+        ]
+        return pd.DataFrame(columns=[summary_columns]), pd.DataFrame(
+            columns=[body_columns]
+        )
