@@ -31,8 +31,8 @@ import warnings
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def option_hist_yearly_czce(symbol: str = "SR", year: str = "2021") -> pd.DataFrame:

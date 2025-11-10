@@ -9,8 +9,8 @@ https://investor.szse.cn/market/option/day/index.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def option_daily_stats_sse(date: str = "20240626") -> pd.DataFrame:

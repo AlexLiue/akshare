@@ -12,8 +12,8 @@ from io import BytesIO
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def __fetch_ftse_index_futu(date: str = "20231108") -> int:

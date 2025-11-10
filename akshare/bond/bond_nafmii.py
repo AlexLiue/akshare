@@ -7,8 +7,8 @@ Desc:中国银行间市场交易商协会(https://www.nafmii.org.cn/)
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_post
 
 
 def bond_debt_nafmii(page: str = "1") -> pd.DataFrame:

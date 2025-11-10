@@ -3192,7 +3192,7 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.17.83 fix: fix stock_cyq_em interface
 """
 
-__version__ = "1.17.87-dev1"
+__version__ = "1.17.87-dev5"
 __author__ = "AKFamily"
 
 import sys
@@ -5485,7 +5485,11 @@ from akshare.stock.stock_us_sina import (
 """
 香港证监会公示数据
 """
-from akshare.stock.stock_hk_sfc import get_stock_short_sale_hk_report_list, stock_hk_short_sale
+from akshare.stock.stock_hk_sfc import (
+    get_stock_short_sale_hk_report_list,
+    stock_hk_short_sale,
+    stock_hk_ccass_records
+)
 
 
 """

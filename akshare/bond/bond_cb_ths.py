@@ -7,8 +7,8 @@ https://data.10jqka.com.cn/ipo/bond/
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def bond_zh_cov_info_ths() -> pd.DataFrame:

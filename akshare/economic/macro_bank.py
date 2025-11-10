@@ -23,7 +23,8 @@ import time
 
 import pandas as pd
 import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def __get_interest_rate_data(attr_id: str, name: str = "利率") -> pd.DataFrame:

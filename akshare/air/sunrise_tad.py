@@ -9,8 +9,8 @@ https://www.timeanddate.com
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def sunrise_city_list() -> list:

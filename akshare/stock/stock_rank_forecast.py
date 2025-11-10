@@ -7,11 +7,10 @@ https://webapi.cninfo.com.cn/#/thematicStatistics?name=%E6%8A%95%E8%B5%84%E8%AF%
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_post
 
 
 def _get_file_content_cninfo(file: str = "cninfo.js") -> str:

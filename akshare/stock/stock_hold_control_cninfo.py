@@ -13,10 +13,9 @@ import datetime
 
 import pandas as pd
 import py_mini_racer
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_get, requests_post
 
 
 def _get_file_content_cninfo(file: str = "cninfo.js") -> str:

@@ -9,10 +9,9 @@ https://stock.eastmoney.com/a/czpnc.html
 from datetime import datetime
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.request import make_request_with_retry_json
+from akshare.request import requests_get
 from akshare.utils.cons import headers
 
 
@@ -135,7 +134,7 @@ def stock_info_global_futu() -> pd.DataFrame:
     }
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)"
-                      " Chrome/111.0.0.0 Safari/537.36"
+        " Chrome/111.0.0.0 Safari/537.36"
     }
     r = requests_get(url, params=params, headers=headers)
     data_json = r.json()

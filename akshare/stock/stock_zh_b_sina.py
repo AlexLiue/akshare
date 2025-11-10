@@ -11,10 +11,9 @@ import re
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 
+from akshare.request import requests_get
 from akshare.stock.cons import (
     zh_sina_a_stock_url,
     zh_sina_a_stock_hist_url,

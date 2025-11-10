@@ -8,9 +8,8 @@ Desc: 东方财富网-指数行情数据
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.func import fetch_paginated_data
 
 

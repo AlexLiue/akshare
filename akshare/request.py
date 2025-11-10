@@ -2,7 +2,6 @@ import time
 
 import requests
 from fake_useragent import UserAgent
-from flask import Response
 from requests.exceptions import RequestException
 
 from akshare.exceptions import NetworkError, APIError, RateLimitError, DataParsingError
@@ -12,7 +11,13 @@ global proxies
 
 
 def requests_get(
-    url, params=None, headers=None, proxies=None, timeout=20, max_retries=5, retry_delay=1
+    url,
+    params=None,
+    headers=None,
+    proxies=None,
+    timeout=20,
+    max_retries=5,
+    retry_delay=1,
 ):
     """
     发送 HTTP GET 请求，支持重试机制和代理设置。
@@ -30,10 +35,10 @@ def requests_get(
     if headers is None:
         """ 构建 requests 的请求报文头 """
         headers = {
-            "User-Agent": UserAgent(os=["Windows", "Linux", "Ubuntu", "Mac OS X"]).random,
+            "User-Agent": UserAgent(os=["Windows", "Mac OS X"]).random,
             "Connection": "close",
             "Accept": "text/html,application/xhtml+xml,application/xml",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         }
 
     for attempt in range(max_retries):
@@ -69,9 +74,16 @@ def requests_get(
     raise NetworkError(f"Failed to connect after {max_retries} attempts")
 
 
-
 def requests_post(
-    url, params=None, data=None, json=None, headers=None, timeout=1, proxies=None, max_retries=5, retry_delay=1
+    url,
+    params=None,
+    data=None,
+    json=None,
+    headers=None,
+    timeout=20,
+    proxies=None,
+    max_retries=5,
+    retry_delay=1,
 ):
     """
     发送 HTTP POST 请求，支持重试机制和代理设置。
@@ -91,16 +103,22 @@ def requests_post(
     if headers is None:
         """ 构建 requests 的请求报文头 """
         headers = {
-            "User-Agent": UserAgent(os=["Windows", "Linux", "Ubuntu", "Mac OS X"]).random,
+            "User-Agent": UserAgent(os=["Windows", "Mac OS X"]).random,
             "Connection": "close",
             "Accept": "text/html,application/xhtml+xml,application/xml",
-            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8"
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
         }
 
     for attempt in range(max_retries):
         try:
             response = requests.post(
-                url, params=params, data=data, json=json, headers=headers, timeout=timeout, proxies=proxies
+                url,
+                params=params,
+                data=data,
+                json=json,
+                headers=headers,
+                timeout=timeout,
+                proxies=proxies,
             )
             if response.status_code == 200:
                 return response
@@ -128,8 +146,6 @@ def requests_post(
             retry_delay *= 2  # 指数退避策略
 
     raise NetworkError(f"Failed to connect after {max_retries} attempts")
-
-
 
 
 def make_request_with_retry_json(

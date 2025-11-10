@@ -6,9 +6,9 @@ Desc: 百度股市通- A 股或指数-股评-投票
 https://gushitong.baidu.com/index/ab-000001
 """
 
-import requests
-from akshare.request import requests_get, requests_post
 import pandas as pd
+
+from akshare.request import requests_get
 
 
 def stock_zh_vote_baidu(

@@ -14,9 +14,9 @@ https://www.sse.com.cn/disclosure/credibility/supervision/change/
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
+
+from akshare.request import requests_get
 
 
 def stock_share_hold_change_sse(symbol: str = "600000") -> pd.DataFrame:

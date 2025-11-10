@@ -9,9 +9,8 @@ https://stockapp.finance.qq.com/mstats/#mod=list&id=hk_ah&module=HK&type=AH&sort
 import random
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.stock.cons import (
     hk_url,
     hk_headers,

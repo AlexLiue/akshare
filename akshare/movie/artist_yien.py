@@ -13,9 +13,9 @@ import json
 import os
 
 import pandas as pd  # type: ignore
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer  # type: ignore
+
+from akshare.request import requests_post
 
 
 def _get_js_path(name: str = "", module_file: str = "") -> str:

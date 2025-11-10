@@ -12,8 +12,6 @@ http://www.cffex.com.cn/zz1000gzqq/
 from io import BytesIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.option.cons import (
     SH_OPTION_PAYLOAD,
@@ -30,6 +28,7 @@ from akshare.option.cons import (
     SH_OPTION_URL_KING_50_YFD,
     CFFEX_OPTION_URL_300,
 )
+from akshare.request import requests_get
 
 
 def option_finance_sse_underlying(symbol: str = "华夏科创50ETF期权") -> pd.DataFrame:

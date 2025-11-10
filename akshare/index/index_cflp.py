@@ -7,8 +7,8 @@ http://index.0256.cn/expx.htm
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_post
 
 
 def index_price_cflp(symbol: str = "周指数") -> pd.DataFrame:

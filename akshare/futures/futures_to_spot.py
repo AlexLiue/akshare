@@ -8,7 +8,7 @@ Desc: 期货-期转现-交割
 from io import StringIO, BytesIO
 
 import pandas as pd
-import requests
+
 from akshare.request import requests_get, requests_post
 
 

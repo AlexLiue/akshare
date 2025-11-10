@@ -11,8 +11,6 @@ Desc: 中国外汇交易中心暨全国银行间同业拆借中心-市场数据-
 import time
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.fx.cons import (
     SHORT_HEADERS,
@@ -20,6 +18,7 @@ from akshare.fx.cons import (
     FX_SWAP_URL,
     FX_PAIR_URL,
 )
+from akshare.request import requests_post
 
 
 def fx_spot_quote() -> pd.DataFrame:

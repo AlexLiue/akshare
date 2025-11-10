@@ -7,9 +7,9 @@ https://data.eastmoney.com/executive/list.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
+
+from akshare.request import requests_get
 
 
 def stock_hold_management_detail_em() -> pd.DataFrame:

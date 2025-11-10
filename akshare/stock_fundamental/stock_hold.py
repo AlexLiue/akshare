@@ -9,9 +9,8 @@ https://vip.stock.finance.sina.com.cn/q/go.php/vComStockHold/kind/jgcg/index.pht
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 

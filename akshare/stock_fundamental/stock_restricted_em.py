@@ -7,9 +7,9 @@ https://data.eastmoney.com/dxf/detail.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
+
+from akshare.request import requests_get
 
 
 def stock_restricted_release_summary_em(

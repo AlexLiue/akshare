@@ -7,8 +7,8 @@ https://quote.eastmoney.com/center/gridlist.html#us_wellknown
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_us_famous_spot_em(symbol: str = "科技类") -> pd.DataFrame:

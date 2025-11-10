@@ -8,8 +8,8 @@ https://data.eastmoney.com/cjsj/gpkhsj.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_account_statistics_em() -> pd.DataFrame:

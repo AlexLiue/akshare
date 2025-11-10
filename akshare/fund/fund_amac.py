@@ -7,9 +7,8 @@ Desc: 中国证券投资基金业协会-信息公示数据
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_post
 from akshare.utils.tqdm import get_tqdm
 
 headers = {

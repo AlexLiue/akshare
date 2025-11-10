@@ -7,9 +7,9 @@ https://www.bloomberg.com/billionaires/
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def index_bloomberg_billionaires_hist(year: str = "2021") -> pd.DataFrame:

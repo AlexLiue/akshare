@@ -9,8 +9,8 @@ http://www.czce.com.cn/cn/jysj/cksj/H770322index_1.htm
 import xml.etree.ElementTree as ET
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def futures_contract_info_czce(date: str = "20240228") -> pd.DataFrame:

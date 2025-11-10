@@ -7,8 +7,8 @@ https://quote.eastmoney.com/center/qqsc.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 from akshare.utils.func import fetch_paginated_data
 
 

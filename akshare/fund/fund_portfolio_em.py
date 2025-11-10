@@ -9,10 +9,9 @@ https://fundf10.eastmoney.com/ccmx_000001.html
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 
@@ -87,7 +86,11 @@ def fund_portfolio_hold_em(symbol: str = "000001", date: str = "2024") -> pd.Dat
 
         temp_df["季度"] = item_label[item]
         temp_df = temp_df[column_name]
-        big_df = pd.concat(objs=[temp_df, big_df], ignore_index=True) if not big_df.empty else temp_df
+        big_df = (
+            pd.concat(objs=[temp_df, big_df], ignore_index=True)
+            if not big_df.empty
+            else temp_df
+        )
 
     if not big_df.empty:
         big_df["占净值比例"] = pd.to_numeric(big_df["占净值比例"], errors="coerce")

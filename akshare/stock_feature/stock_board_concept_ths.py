@@ -6,18 +6,17 @@ Desc: 同花顺-板块-概念板块
 https://q.10jqka.com.cn/thshy/
 """
 
-from typing import Dict
 from datetime import datetime
 from functools import lru_cache
 from io import StringIO
+from typing import Dict
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
-from bs4 import BeautifulSoup
 import py_mini_racer
+from bs4 import BeautifulSoup
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_get
 from akshare.utils import demjson
 from akshare.utils.tqdm import get_tqdm
 

@@ -9,9 +9,8 @@ http://www.swhyresearch.com/institute_sw/allIndex/downloadCenter/industryType
 import io
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.cons import headers
 
 

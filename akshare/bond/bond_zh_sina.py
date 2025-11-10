@@ -10,8 +10,6 @@ import datetime
 import re
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 from akshare.bond.cons import (
@@ -20,6 +18,7 @@ from akshare.bond.cons import (
     zh_sina_bond_hs_url,
     zh_sina_bond_hs_hist_url,
 )
+from akshare.request import requests_get
 from akshare.stock.cons import hk_js_decode
 from akshare.utils import demjson
 from akshare.utils.tqdm import get_tqdm

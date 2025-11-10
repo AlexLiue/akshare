@@ -12,9 +12,8 @@ https://data.eastmoney.com/bbsj/202003/xjll.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -39,7 +38,7 @@ def stock_zcfz_em(date: str = "20240331") -> pd.DataFrame:
         "reportName": "RPT_DMSK_FN_BALANCE",
         "columns": "ALL",
         "filter": f"""(SECURITY_TYPE_CODE in ("058001001","058001008"))(TRADE_MARKET_CODE!="069001017")
-        (REPORT_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        (REPORT_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()
@@ -180,7 +179,7 @@ def stock_zcfz_bj_em(date: str = "20240331") -> pd.DataFrame:
         "reportName": "RPT_DMSK_FN_BALANCE",
         "columns": "ALL",
         "filter": f"""(TRADE_MARKET_CODE="069001017")
-        (REPORT_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        (REPORT_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()
@@ -321,7 +320,7 @@ def stock_lrb_em(date: str = "20240331") -> pd.DataFrame:
         "reportName": "RPT_DMSK_FN_INCOME",
         "columns": "ALL",
         "filter": f"""(SECURITY_TYPE_CODE in ("058001001","058001008"))(TRADE_MARKET_CODE!="069001017")
-        (REPORT_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        (REPORT_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()
@@ -457,7 +456,7 @@ def stock_xjll_em(date: str = "20240331") -> pd.DataFrame:
         "reportName": "RPT_DMSK_FN_CASHFLOW",
         "columns": "ALL",
         "filter": f"""(SECURITY_TYPE_CODE in ("058001001","058001008"))(TRADE_MARKET_CODE!="069001017")
-        (REPORT_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        (REPORT_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()

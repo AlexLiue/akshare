@@ -9,12 +9,11 @@ https://data.10jqka.com.cn/market/longhu/
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
-from akshare.utils.tqdm import get_tqdm
+from akshare.request import requests_get
 from akshare.utils.cons import headers
+from akshare.utils.tqdm import get_tqdm
 
 
 def stock_lh_yyb_most() -> pd.DataFrame:

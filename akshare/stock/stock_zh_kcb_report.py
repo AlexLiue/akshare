@@ -7,9 +7,9 @@ https://data.eastmoney.com/notices/kcb.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
+
+from akshare.request import requests_get
 
 
 def _stock_zh_kcb_report_em_page() -> int:

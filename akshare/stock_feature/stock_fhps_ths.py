@@ -9,8 +9,8 @@ https://basic.10jqka.com.cn/new/603444/bonus.html
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_fhps_detail_ths(symbol: str = "603444") -> pd.DataFrame:

@@ -7,8 +7,8 @@ https://data.eastmoney.com/hsgt/hsgtDetail/scgk.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_hsgt_fund_min_em(symbol: str = "北向资金") -> pd.DataFrame:

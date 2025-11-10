@@ -9,14 +9,13 @@ https://finance.sina.com.cn/futuremarket/index.shtml
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.futures.cons import (
     zh_subscribe_exchange_symbol_url,
     zh_match_main_contract_url,
     zh_match_main_contract_payload,
 )
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 

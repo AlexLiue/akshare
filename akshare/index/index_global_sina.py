@@ -7,10 +7,9 @@ https://finance.sina.com.cn/stock/globalindex/quotes/UKX
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.index.cons import index_global_sina_symbol_map
+from akshare.request import requests_get
 
 
 def index_global_name_table() -> pd.DataFrame:

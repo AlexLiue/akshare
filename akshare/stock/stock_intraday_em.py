@@ -9,8 +9,8 @@ https://quote.eastmoney.com/f1.html?newcode=0.000001
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def __event_stream(url, params):

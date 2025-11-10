@@ -9,10 +9,10 @@ http://vip.stock.finance.sina.com.cn/mkt/
 import math
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 from tqdm import tqdm
+
+from akshare.request import requests_get
 
 
 def stock_classify_board() -> dict:

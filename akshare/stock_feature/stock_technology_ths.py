@@ -10,11 +10,10 @@ from io import StringIO
 
 import pandas as pd
 import py_mini_racer
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 

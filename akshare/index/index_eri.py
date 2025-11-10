@@ -7,8 +7,8 @@ https://zs.zjpwq.net/
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def index_eri(symbol: str = "月度") -> pd.DataFrame:

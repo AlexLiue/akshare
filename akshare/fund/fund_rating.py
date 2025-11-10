@@ -7,9 +7,9 @@ https://fund.eastmoney.com/data/fundrating.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def fund_rating_all() -> pd.DataFrame:

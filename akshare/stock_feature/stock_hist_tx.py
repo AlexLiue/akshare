@@ -9,10 +9,9 @@ https://quote.eastmoney.com/
 import datetime
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.index.index_stock_zh import get_tx_start_year
+from akshare.request import requests_get
 from akshare.utils import demjson
 from akshare.utils.tqdm import get_tqdm
 

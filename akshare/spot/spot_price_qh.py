@@ -9,9 +9,9 @@ https://www.99qh.com/data/spotTrend
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def __get_item_of_spot_price_qh() -> pd.DataFrame:

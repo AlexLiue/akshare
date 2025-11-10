@@ -7,9 +7,8 @@ https://data.eastmoney.com/xg/xg/sbqy.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 
