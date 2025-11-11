@@ -131,6 +131,7 @@ def stock_hk_ccass_records(
         "txtSelPartID": "",
     }
     r = requests_post(url, data=data)
+
     cc = OpenCC("hk2s")
     soup = BeautifulSoup(cc.convert(r.text), "html.parser")
 
@@ -155,19 +156,19 @@ def stock_hk_ccass_records(
         summary_rows = []
         for item in summary_divs:
             category = item.find("div", class_="summary-category").text.strip()
-            shareholding = int(
+            shareholding = (
                 item.find("div", class_="shareholding")
                 .find("div", class_="value")
                 .text.strip()
                 .replace(",", "")
             )
-            number = int(
+            number = (
                 item.find("div", class_="number-of-participants")
                 .find("div", class_="value")
                 .text.strip()
                 .replace(",", "")
             )
-            percents = float(
+            percents = (
                 item.find("div", class_="percent-of-participants")
                 .find("div", class_="value")
                 .text.strip()[:-1]
@@ -189,6 +190,9 @@ def stock_hk_ccass_records(
             "百分比",
         ]
         summary_df = summary_df[summary_columns]
+        summary_df["持股量"] = pd.to_numeric(summary_df["持股量"], errors="coerce")
+        summary_df["参数者数"] = pd.to_numeric(summary_df["参数者数"], errors="coerce")
+        summary_df["百分比"] = pd.to_numeric(summary_df["百分比"], errors="coerce")
 
         body_divs = soup.find("tbody").find_all("tr")
         body_rows = []
@@ -203,13 +207,13 @@ def stock_hk_ccass_records(
                 .find("div", class_="mobile-list-body")
                 .text.strip()
             )
-            shareholding = int(
+            shareholding = (
                 item.find("td", class_="col-shareholding text-right")
                 .find("div", class_="mobile-list-body")
                 .text.strip()
                 .replace(",", "")
             )
-            percents = float(
+            percents = (
                 item.find("td", class_="col-shareholding-percent text-right")
                 .find("div", class_="mobile-list-body")
                 .text.strip()[:-1]
@@ -231,6 +235,8 @@ def stock_hk_ccass_records(
             "百分比",
         ]
         body_df = body_df[body_columns]
+        summary_df["持股量"] = pd.to_numeric(summary_df["持股量"], errors="coerce")
+        summary_df["百分比"] = pd.to_numeric(summary_df["百分比"], errors="coerce")
 
         return summary_df, body_df
     else:
