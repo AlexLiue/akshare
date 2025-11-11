@@ -214,9 +214,13 @@ def stock_hk_ccass_records(
                 .replace(",", "")
             )
             percents = (
-                item.find("td", class_="col-shareholding-percent text-right")
-                .find("div", class_="mobile-list-body")
-                .text.strip()[:-1]
+                0
+                if item.find("td", class_="col-shareholding-percent text-right") is None
+                else (
+                    item.find("td", class_="col-shareholding-percent text-right")
+                    .find("div", class_="mobile-list-body")
+                    .text.strip()[:-1]
+                )
             )
             body_rows.append([participant_id, participant_name, shareholding, percents])
         body_df = pd.DataFrame(
