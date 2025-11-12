@@ -9,10 +9,9 @@ https://basic.10jqka.com.cn/new/000063/finance.html
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
+from akshare.request import requests_get
 from akshare.utils.cons import headers
 
 

@@ -7,9 +7,9 @@ https://www.forbeschina.com/lists
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def forbes_rank(symbol: str = "2021福布斯中国创投人100") -> pd.DataFrame:

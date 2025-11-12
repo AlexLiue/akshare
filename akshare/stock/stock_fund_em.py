@@ -11,9 +11,8 @@ import time
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.func import fetch_paginated_data
 from akshare.utils.tqdm import get_tqdm
 

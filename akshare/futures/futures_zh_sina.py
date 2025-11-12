@@ -12,8 +12,6 @@ import time
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 from akshare.futures.cons import (
@@ -22,6 +20,7 @@ from akshare.futures.cons import (
     zh_match_main_contract_payload,
 )
 from akshare.futures.futures_contract_detail import futures_contract_detail
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 
@@ -370,7 +369,7 @@ def futures_zh_spot(
                 "_",
                 "_",
                 "_",
-                "_" "_",
+                "__",
                 "time",
                 "_",
                 "_",
@@ -572,7 +571,7 @@ def futures_zh_spot(
                 "_",
                 "_",
                 "_",
-                "_" "_",
+                "__",
                 "time",
                 "_",
                 "_",

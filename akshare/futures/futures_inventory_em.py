@@ -7,9 +7,9 @@ https://data.eastmoney.com/ifdata/kcsj.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
 from akshare.futures.cons import futures_inventory_em_symbol_dict
+from akshare.request import requests_get
 
 
 def futures_inventory_em(symbol: str = "a") -> pd.DataFrame:

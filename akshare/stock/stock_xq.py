@@ -11,7 +11,6 @@ from datetime import datetime
 
 import pandas as pd
 import requests
-from akshare.request import requests_get, requests_post
 
 
 def _convert_timestamp(timestamp_ms: int) -> str:
@@ -45,6 +44,7 @@ def stock_individual_spot_xq(
     :rtype: pandas.DataFrame
     """
     from akshare.stock.cons import xq_a_token
+
     session = requests.Session()
     xq_a_token = token or xq_a_token
     headers = {

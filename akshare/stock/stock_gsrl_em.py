@@ -7,8 +7,8 @@ https://data.eastmoney.com/gsrl/gsdt.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_gsrl_gsdt_em(date: str = "20230808") -> pd.DataFrame:

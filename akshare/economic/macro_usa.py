@@ -10,8 +10,8 @@ import datetime
 import time
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def __macro_usa_base_func(symbol: str, params: dict) -> pd.DataFrame:

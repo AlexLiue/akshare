@@ -7,8 +7,8 @@ http://ss.kqindex.cn:9559/rinder_web_kqsszs/index/index_page.do
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def index_kq_fashion(symbol: str = "时尚创意指数") -> pd.DataFrame:

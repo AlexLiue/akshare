@@ -7,8 +7,8 @@ https://gushitong.baidu.com/stock/ab-002044
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_zh_valuation_baidu(

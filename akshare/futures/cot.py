@@ -24,13 +24,12 @@ from io import BytesIO
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
 from akshare.futures import cons
 from akshare.futures.requests_fun import requests_link
 from akshare.futures.symbol_var import symbol_varieties
+from akshare.request import requests_get, requests_post
 
 calendar = cons.get_calendar()
 rank_columns = [

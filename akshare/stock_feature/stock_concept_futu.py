@@ -9,9 +9,9 @@ https://www.futunn.com/quote/sparks-us
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def _stock_concept_cons_futu(symbol: str = "巴菲特持仓") -> pd.DataFrame:

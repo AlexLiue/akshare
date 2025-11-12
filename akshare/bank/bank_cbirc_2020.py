@@ -13,11 +13,10 @@ import warnings
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
 from akshare.bank.cons import cbirc_headers_without_cookie_2020
+from akshare.request import requests_get
 
 
 def bank_fjcf_total_num(item: str = "分局本级") -> int:

@@ -5,9 +5,10 @@ Date: 2022/4/7 17:36
 Desc: http://kcb.sse.com.cn/renewal/xmxq/index.shtml?auditId=926&anchor_type=0
 """
 
-import requests
-from akshare.request import requests_get, requests_post
 import pandas as pd
+
+from akshare.request import requests_get
+
 
 # TODO
 

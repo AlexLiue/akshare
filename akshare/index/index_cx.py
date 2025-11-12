@@ -7,8 +7,8 @@ https://yun.ccxe.com.cn/indices/dei
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def index_pmi_com_cx() -> pd.DataFrame:

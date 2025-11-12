@@ -10,8 +10,8 @@ import time
 
 import pandas as pd
 import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 

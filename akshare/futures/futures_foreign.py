@@ -10,12 +10,11 @@ from datetime import datetime
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.futures.futures_hq_sina import (
     futures_foreign_commodity_subscribe_exchange_symbol,
 )
+from akshare.request import requests_get
 
 
 def futures_foreign_hist(symbol: str = "ZSD") -> pd.DataFrame:

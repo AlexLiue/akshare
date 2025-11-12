@@ -5,9 +5,10 @@ Date: 2022/4/7 17:36
 Desc: http://kcb.sse.com.cn/renewal/#
 """
 
-import requests
-from akshare.request import requests_get, requests_post
 import pandas as pd
+
+from akshare.request import requests_get
+
 
 # TODO
 

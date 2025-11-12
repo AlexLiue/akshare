@@ -8,8 +8,8 @@ https://tsite.shfe.com.cn/statements/dataview.html?paramid=kx
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def futures_stock_shfe_js(date: str = "20240419") -> pd.DataFrame:

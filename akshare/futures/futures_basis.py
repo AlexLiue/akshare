@@ -107,7 +107,7 @@ def futures_spot_price(
         warnings.warn(f"{date.strftime('%Y%m%d')}非交易日")
         return pd.DataFrame()
     u1 = "https://www.100ppi.com/sf/"
-    u2 = f'https://www.100ppi.com/sf/day-{date.strftime("%Y-%m-%d")}.html'
+    u2 = f"https://www.100ppi.com/sf/day-{date.strftime('%Y-%m-%d')}.html"
     i = 1
     while True:
         for url in [u2, u1]:

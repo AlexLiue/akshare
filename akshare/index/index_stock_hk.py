@@ -9,14 +9,12 @@ https://quote.eastmoney.com/gb/zsHSTECF2L.html
 """
 
 import re
-
-import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
-import py_mini_racer
-
 from functools import lru_cache
 
+import pandas as pd
+import py_mini_racer
+
+from akshare.request import requests_get
 from akshare.stock.cons import hk_js_decode
 from akshare.utils.func import fetch_paginated_data
 

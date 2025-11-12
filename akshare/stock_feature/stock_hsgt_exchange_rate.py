@@ -12,8 +12,8 @@ import warnings
 from datetime import datetime
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_sgt_settlement_exchange_rate_szse() -> pd.DataFrame:

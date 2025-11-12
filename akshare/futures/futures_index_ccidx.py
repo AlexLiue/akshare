@@ -9,8 +9,8 @@ http://www.ccidx.com/
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def futures_index_ccidx(symbol: str = "中证商品期货指数") -> pd.DataFrame:

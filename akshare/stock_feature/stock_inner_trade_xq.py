@@ -7,8 +7,8 @@ https://xueqiu.com/hq/insider
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_inner_trade_xq() -> pd.DataFrame:

@@ -7,10 +7,9 @@ https://stock.finance.sina.com.cn/futures/view/optionsDP.php
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
+from akshare.request import requests_get
 from akshare.utils import demjson
 
 

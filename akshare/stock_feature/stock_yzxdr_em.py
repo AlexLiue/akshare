@@ -7,11 +7,10 @@ https://data.eastmoney.com/yzxdr/
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
-from akshare.utils.tqdm import get_tqdm
 
+from akshare.request import requests_get
 from akshare.utils import demjson
+from akshare.utils.tqdm import get_tqdm
 
 
 def stock_yzxdr_em(date: str = "20240930") -> pd.DataFrame:

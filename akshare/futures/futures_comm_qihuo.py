@@ -9,9 +9,9 @@ https://www.9qihuo.com/qihuoshouxufei
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def _futures_comm_qihuo_process(df: pd.DataFrame, name: str = None) -> pd.DataFrame:

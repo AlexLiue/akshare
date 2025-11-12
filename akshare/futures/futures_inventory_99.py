@@ -11,9 +11,9 @@ from datetime import datetime
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 @lru_cache(maxsize=32)
@@ -65,9 +65,9 @@ def futures_inventory_99(symbol: str = "豆一") -> pd.DataFrame:
     headers = {
         "Content-Type": "application/json;charset=UTF-8",
         "_pcc": "ccU4XwAjPxRnbT0L5Zm0tfZrCdL9+nH4E5yYYG3aBFlf9iKUbTVt70JbtguPRpvrUGatAbw4NhRK4QGVvMDprt"
-                "jmOCMw7osHyT/KSE9nWWKXmPVHV0xkzSrDWXiUrqzZsEd2NVCJYdqTClzdkZ3MouP6BEYBu3QbbOPqGraXefU=",
+        "jmOCMw7osHyT/KSE9nWWKXmPVHV0xkzSrDWXiUrqzZsEd2NVCJYdqTClzdkZ3MouP6BEYBu3QbbOPqGraXefU=",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/58.0.3029.110 Safari/537.3",
+        "Chrome/58.0.3029.110 Safari/537.3",
         "referer": "https://www.99qh.com",
         "origin": "https://www.99qh.com",
     }

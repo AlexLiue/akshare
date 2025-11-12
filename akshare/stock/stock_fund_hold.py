@@ -7,7 +7,6 @@ http://data.eastmoney.com/zlsj/2020-06-30-1-2.html
 """
 
 import pandas as pd
-from akshare.request import requests_get, requests_post
 
 from akshare.request import requests_get
 

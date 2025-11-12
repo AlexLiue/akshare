@@ -7,8 +7,8 @@ https://emweb.securities.eastmoney.com/PC_HSF10/BusinessAnalysis/Index?type=web&
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_zygc_em(symbol: str = "SH688041") -> pd.DataFrame:

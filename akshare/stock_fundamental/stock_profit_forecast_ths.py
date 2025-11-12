@@ -9,9 +9,8 @@ https://basic.10jqka.com.cn/new/600519/worth.html
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.cons import headers
 
 

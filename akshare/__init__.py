@@ -3192,7 +3192,7 @@ amac_manager_cancelled_info # 中国证券投资基金业协会-信息公示-诚
 1.17.83 fix: fix stock_cyq_em interface
 """
 
-__version__ = "1.17.86"
+__version__ = "1.17.87-dev5"
 __author__ = "AKFamily"
 
 import sys
@@ -5482,6 +5482,26 @@ from akshare.stock.stock_us_sina import (
     get_us_stock_name,
 )
 
+
+"""
+东方财富港股信息数据
+"""
+from akshare.stock.stock_hk_em import (
+    stock_hk_short_sale_em,
+    stock_hk_short_sale_em_simple
+)
+
+
+"""
+香港证监会公示数据
+"""
+from akshare.stock.stock_hk_sfc import (
+    get_stock_short_sale_hk_report_list,
+    stock_hk_short_sale,
+    stock_hk_ccass_records
+)
+
+
 """
 新浪-港股实时行情数据和历史数据(前复权和后复权因子)
 """
@@ -5798,3 +5818,4 @@ try:
     from akqmt import xt_api
 except ImportError as e:
     pass
+

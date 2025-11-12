@@ -7,9 +7,8 @@ https://data.eastmoney.com/gdfx/
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -34,7 +33,7 @@ def stock_gdfx_free_holding_statistics_em(
         "columns": "ALL",
         "source": "WEB",
         "client": "WEB",
-        "filter": f"""(HOLDNUM_CHANGE_TYPE="001")(END_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        "filter": f"""(HOLDNUM_CHANGE_TYPE="001")(END_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()
@@ -136,7 +135,7 @@ def stock_gdfx_holding_statistics_em(date: str = "20210930") -> pd.DataFrame:
         "columns": "ALL",
         "source": "WEB",
         "client": "WEB",
-        "filter": f"""(HOLDNUM_CHANGE_TYPE="001")(END_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        "filter": f"""(HOLDNUM_CHANGE_TYPE="001")(END_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()
@@ -618,7 +617,7 @@ def stock_gdfx_holding_detail_em(
         "columns": "ALL",
         "source": "WEB",
         "client": "WEB",
-        "filter": f"""(HOLDER_NEWTYPE="{indicator}")(HOLDNUM_CHANGE_NAME="{symbol}")(END_DATE='{'-'.join([date[:4], date[4:6], date[6:]])}')""",
+        "filter": f"""(HOLDER_NEWTYPE="{indicator}")(HOLDNUM_CHANGE_NAME="{symbol}")(END_DATE='{"-".join([date[:4], date[4:6], date[6:]])}')""",
     }
     r = requests_get(url, params=params)
     data_json = r.json()

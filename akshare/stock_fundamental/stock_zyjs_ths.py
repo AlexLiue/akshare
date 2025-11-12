@@ -7,9 +7,9 @@ https://basic.10jqka.com.cn/new/000066/operate.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 
 def stock_zyjs_ths(symbol: str = "000066") -> pd.DataFrame:

@@ -10,9 +10,8 @@ import math
 from typing import Optional
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -239,7 +238,7 @@ def futures_global_hist_em(symbol: str = "HG00Y") -> pd.DataFrame:
     temp_df["涨幅"] = pd.to_numeric(temp_df["涨幅"], errors="coerce")
     temp_df["日增"] = pd.to_numeric(temp_df["日增"], errors="coerce")
     # 日增修复为有符号32位整数值
-    unsigned_max, signed_max = (2 ** 32) - 1, (2 ** 31) - 1
+    unsigned_max, signed_max = (2**32) - 1, (2**31) - 1
     mask = temp_df["日增"] > signed_max
     temp_df.loc[mask, "日增"] = temp_df.loc[mask, "日增"] - (unsigned_max + 1)
     return temp_df

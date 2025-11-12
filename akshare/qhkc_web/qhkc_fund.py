@@ -10,8 +10,6 @@ import datetime
 from typing import AnyStr
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.futures.cons import (
     QHKC_FUND_BS_URL,
@@ -19,6 +17,7 @@ from akshare.futures.cons import (
     QHKC_FUND_POSITION_CHANGE_URL,
     QHKC_FUND_DEAL_URL,
 )
+from akshare.request import requests_post
 
 
 def get_qhkc_fund_bs(

@@ -7,8 +7,8 @@ https://data.eastmoney.com/cjsj/oil_default.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def energy_oil_hist() -> pd.DataFrame:

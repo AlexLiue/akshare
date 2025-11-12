@@ -7,8 +7,8 @@ http://data.cpcadata.com/FuelMarket
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def car_market_total_cpca(

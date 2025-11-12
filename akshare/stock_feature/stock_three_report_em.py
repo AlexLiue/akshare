@@ -8,10 +8,9 @@ Desc: 东方财富-股票-财务分析
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -103,7 +102,7 @@ def stock_balance_sheet_by_yearly_em(symbol: str = "SH600036") -> pd.DataFrame:
     try:
         temp_df = pd.DataFrame(data_json["data"])
     except:  # noqa: E722
-        company_type = '3'
+        company_type = "3"
         params.update({"companyType": company_type})
         r = requests_get(url, params=params)
         data_json = r.json()
@@ -486,7 +485,7 @@ def stock_balance_sheet_by_report_delisted_em(symbol: str = "SZ000013") -> pd.Da
     params = {
         "type": "RPT_F10_FINANCE_GBALANCE",
         "sty": "F10_FINANCE_GBALANCE",
-        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({','.join(report_date_list)}))""",
+        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({",".join(report_date_list)}))""",
         "p": "1",
         "ps": "200",
         "sr": "-1",
@@ -519,7 +518,7 @@ def stock_profit_sheet_by_report_delisted_em(symbol: str = "SZ000013") -> pd.Dat
     params = {
         "type": "RPT_F10_FINANCE_GINCOME",
         "sty": "APP_F10_GINCOME",
-        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({','.join(report_date_list)}))""",
+        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({",".join(report_date_list)}))""",
         "p": "1",
         "ps": "200",
         "sr": "-1",
@@ -554,7 +553,7 @@ def stock_cash_flow_sheet_by_report_delisted_em(
     params = {
         "type": "RPT_F10_FINANCE_GCASHFLOW",
         "sty": "APP_F10_GCASHFLOW",
-        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({','.join(report_date_list)}))""",
+        "filter": f"""(SECUCODE="{symbol[2:]}.{symbol[:2]}")(REPORT_DATE in ({",".join(report_date_list)}))""",
         "p": "1",
         "ps": "200",
         "sr": "-1",

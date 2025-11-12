@@ -16,13 +16,12 @@ https://data.10jqka.com.cn/funds/ddzz/#refCountId=data_55f13c2c_254
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
-from bs4 import BeautifulSoup
 import py_mini_racer
-from akshare.utils.tqdm import get_tqdm
+from bs4 import BeautifulSoup
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_get
+from akshare.utils.tqdm import get_tqdm
 
 
 def _get_file_content_ths(file: str = "ths.js") -> str:

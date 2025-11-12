@@ -7,8 +7,8 @@ https://quote.eastmoney.com/sz000001.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def stock_bid_ask_em(symbol: str = "000001") -> pd.DataFrame:

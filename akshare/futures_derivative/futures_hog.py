@@ -7,8 +7,8 @@ https://zhujia.zhuwang.com.cn
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_post
 
 
 def futures_hog_core(symbol: str = "外三元") -> pd.DataFrame:

@@ -10,11 +10,10 @@ import json
 from functools import lru_cache
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 from tqdm import tqdm
 
+from akshare.request import requests_get
 from akshare.stock.cons import (
     js_hash_text,
     zh_js_decode,

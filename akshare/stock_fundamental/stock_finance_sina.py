@@ -15,10 +15,9 @@ from datetime import datetime
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from bs4 import BeautifulSoup
 
+from akshare.request import requests_get
 from akshare.utils.tqdm import get_tqdm
 
 
@@ -814,5 +813,7 @@ if __name__ == "__main__":
     stock_main_stock_holder_df = stock_main_stock_holder(stock="600000")
     print(stock_main_stock_holder_df)
 
-    stock_financial_analysis_indicator_em_df = stock_financial_analysis_indicator_em(symbol="301389.SZ", indicator="按报告期")
+    stock_financial_analysis_indicator_em_df = stock_financial_analysis_indicator_em(
+        symbol="301389.SZ", indicator="按报告期"
+    )
     print(stock_financial_analysis_indicator_em_df)

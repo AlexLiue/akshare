@@ -9,14 +9,13 @@ Desc: 奇货可查网站目前已经商业化运营, 特提供奇货可查-指�
 from typing import AnyStr
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.futures.cons import (
     QHKC_INDEX_URL,
     QHKC_INDEX_TREND_URL,
     QHKC_INDEX_PROFIT_LOSS_URL,
 )
+from akshare.request import requests_post
 
 
 def get_qhkc_index(name: AnyStr = "奇货商品", url: AnyStr = QHKC_INDEX_URL):
@@ -205,5 +204,7 @@ if __name__ == "__main__":
     get_qhkc_index_trend_df = get_qhkc_index_trend("奇货贵金属")
     print(get_qhkc_index_trend_df)
 
-    get_qhkc_index_profit_loss_df = get_qhkc_index_profit_loss("奇货贵金属", end_date="20250410")
+    get_qhkc_index_profit_loss_df = get_qhkc_index_profit_loss(
+        "奇货贵金属", end_date="20250410"
+    )
     print(get_qhkc_index_profit_loss_df)

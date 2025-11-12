@@ -7,10 +7,10 @@ https://data.eastmoney.com/invest/invest/list.html
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
-from akshare.utils.tqdm import get_tqdm
+
+from akshare.request import requests_get
 from akshare.utils.cons import headers
+from akshare.utils.tqdm import get_tqdm
 
 
 def stock_analyst_rank_em(year: str = "2024") -> pd.DataFrame:

@@ -7,8 +7,8 @@ https://danjuanfunds.com/funding/003545
 """
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def fund_individual_basic_info_xq(

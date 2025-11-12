@@ -12,8 +12,6 @@ import re
 
 import pandas as pd
 import py_mini_racer
-import requests
-from akshare.request import requests_get, requests_post
 
 from akshare.index.cons import (
     zh_sina_index_stock_payload,
@@ -21,6 +19,7 @@ from akshare.index.cons import (
     zh_sina_index_stock_count_url,
     zh_sina_index_stock_hist_url,
 )
+from akshare.request import requests_get
 from akshare.stock.cons import hk_js_decode
 from akshare.utils import demjson
 from akshare.utils.func import fetch_paginated_data

@@ -8,12 +8,10 @@ Desc: 新浪财经-科创板-实时行情数据和历史行情数据(包含前�
 import datetime
 import re
 
-from akshare.utils import demjson
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 from tqdm import tqdm
 
+from akshare.request import requests_get
 from akshare.stock.cons import (
     zh_sina_kcb_stock_payload,
     zh_sina_kcb_stock_url,
@@ -23,6 +21,7 @@ from akshare.stock.cons import (
     zh_sina_kcb_stock_qfq_url,
     zh_sina_kcb_stock_amount_url,
 )
+from akshare.utils import demjson
 
 
 def get_zh_kcb_page_count() -> int:

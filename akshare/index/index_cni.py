@@ -10,8 +10,8 @@ import zipfile
 from io import BytesIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def index_all_cni() -> pd.DataFrame:

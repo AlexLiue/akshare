@@ -6,12 +6,12 @@ Desc: 债券-集思录-可转债
 集思录：https://www.jisilu.cn/data/cbnew/#cb
 """
 
-from io import StringIO
-import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import time
+from io import StringIO
 
+import pandas as pd
+
+from akshare.request import requests_get, requests_post
 from akshare.utils import demjson
 
 

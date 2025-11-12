@@ -8,10 +8,10 @@ Desc: 修大成主页-Risk Lab-Realized Volatility; Oxford-Man Institute of Quan
 import json
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import urllib3
 from bs4 import BeautifulSoup
+
+from akshare.request import requests_get
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 

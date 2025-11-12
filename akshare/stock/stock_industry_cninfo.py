@@ -9,11 +9,10 @@ https://webapi.cninfo.com.cn/api/stock/p_stock2110
 
 import numpy as np
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
 import py_mini_racer
 
 from akshare.datasets import get_ths_js
+from akshare.request import requests_get, requests_post
 
 
 def _get_file_content_ths(file: str = "cninfo.js") -> str:

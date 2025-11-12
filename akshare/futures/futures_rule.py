@@ -9,8 +9,8 @@ https://www.gtjaqh.com/pc/calendar.html
 from io import StringIO
 
 import pandas as pd
-import requests
-from akshare.request import requests_get, requests_post
+
+from akshare.request import requests_get
 
 
 def futures_rule(date: str = "20231205") -> pd.DataFrame:
