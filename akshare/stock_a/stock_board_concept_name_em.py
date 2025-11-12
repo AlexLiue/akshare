@@ -13,12 +13,16 @@ from typing import Dict, List
 import aiohttp
 import pandas as pd
 
+from akshare.utils.context import config
+
 
 async def fetch_single_page(
-    session: aiohttp.ClientSession, url: str, params: Dict
+    session: aiohttp.ClientSession, url: str, params: Dict, proxies=None
 ) -> Dict:
+    if proxies is None:
+        proxies = config.proxies["http"]
     """异步获取单页数据"""
-    async with session.get(url, params=params, ssl=False) as response:
+    async with session.get(url, params=params, proxy=proxies, ssl=False) as response:
         return await response.json()
 
 
