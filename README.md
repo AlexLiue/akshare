@@ -61,7 +61,7 @@ git commit -m '20250401'
 
 # 合并更新到主分支
 git checkout main
-git pull origin master
+git pull origin main
 git merge develop
 
 # 提交主分支
