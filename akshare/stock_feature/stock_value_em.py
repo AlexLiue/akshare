@@ -169,7 +169,7 @@ def stock_value_em(symbol: str = "300766") -> pd.DataFrame:
     ]
     temp_df["数据日期"] = pd.to_datetime(temp_df["数据日期"], errors="coerce").dt.date
     for item in temp_df.columns[1:]:
-        temp_df[item] = pd.to_numeric(temp_df[item], errors="coerce")
+        temp_df[item] = pd.to_numeric(temp_df[item], errors="coerce").round(2)
     temp_df.sort_values(by="数据日期", ignore_index=True, inplace=True)
     return temp_df
 
