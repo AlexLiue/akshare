@@ -77,7 +77,6 @@ def stock_value_em_by_date(trade_date: str = "20251110") -> pd.DataFrame:
             "数据日期",
             "股票代码",
             "股票简称",
-            "股票简称",
             "交易所",
             "板块代码",
             "板块名称",
@@ -99,7 +98,7 @@ def stock_value_em_by_date(trade_date: str = "20251110") -> pd.DataFrame:
     temp_df["数据日期"] = pd.to_datetime(
         temp_df["数据日期"], errors="coerce"
     ).dt.strftime("%Y%m%d")
-    numeric_columns = temp_df.columns[7:]
+    numeric_columns = temp_df.columns[6:]
     for item in numeric_columns:
         print(item)
         temp_df[item] = pd.to_numeric(temp_df[item], errors="coerce")
