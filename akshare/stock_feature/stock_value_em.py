@@ -100,8 +100,7 @@ def stock_value_em_by_date(trade_date: str = "20251110") -> pd.DataFrame:
     ).dt.strftime("%Y%m%d")
     numeric_columns = temp_df.columns[6:]
     for item in numeric_columns:
-        print(item)
-        temp_df[item] = pd.to_numeric(temp_df[item], errors="coerce")
+        temp_df[item] = pd.to_numeric(temp_df[item], errors="coerce").round(2)
     temp_df.sort_values(by="股票代码", ignore_index=True, inplace=True)
     return temp_df
 
