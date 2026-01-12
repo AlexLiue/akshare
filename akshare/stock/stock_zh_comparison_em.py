@@ -81,6 +81,7 @@ def stock_zh_valuation_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
     """
     url = "https://datacenter.eastmoney.com/securities/api/data/v1/get"
     params = {
+<<<<<<< HEAD
         "reportName": "RPT_PCF10_INDUSTRY_CVALUE",
         "columns": "ALL",
         "quoteColumns": "",
@@ -92,9 +93,22 @@ def stock_zh_valuation_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         "source": "HSF10",
         "client": "PC",
         "v": "07552428957995401",
+=======
+        'reportName': 'RPT_PCF10_INDUSTRY_CVALUE',
+        'columns': 'ALL',
+        'quoteColumns': '',
+        'filter': f'(SECUCODE="{symbol[2:]}.{symbol[:2]}")',
+        'pageNumber': '',
+        'pageSize': '',
+        'sortTypes': '1',
+        'sortColumns': 'PAIMING',
+        'source': 'HSF10',
+        'client': 'PC',
+>>>>>>> upstream/main
     }
     r = requests_get(url, params=params)
     data_json = r.json()
+<<<<<<< HEAD
 
     field_mapping = {
         "CORRE_SECURITY_CODE": "代码",
@@ -126,6 +140,67 @@ def stock_zh_valuation_comparison_em(symbol: str = "SZ000895") -> pd.DataFrame:
         temp_df.rename(columns=field_mapping, inplace=True)
         temp_df = temp_df[field_mapping.values()]
 
+=======
+    temp_df = pd.DataFrame(data_json['result']['data'])
+    field_mapping_result = {
+        "CORRE_SECUCODE": "对应证券代码",
+        "CORRE_SECURITY_CODE": "代码",
+        "CORRE_SECURITY_NAME": "简称",
+        "PB": "市净率-24A",
+        "PB_MRQ": "市净率-MRQ",
+        "PCE": "市现率1-24A",
+        "PCE_TTM": "市现率1-TTM",
+        "PCF": "市现率2-24A",
+        "PCF_TTM": "市现率2-TTM",
+        "PEG": "PEG",
+        "PE_1Y": "市盈率-25E",
+        "PE_2Y": "市盈率-26E",
+        "PE_3Y": "市盈率-27E",
+        "PE_TTM": "市盈率-TTM",
+        "PS": "市销率-24A",
+        "PS_1Y": "市销率-25E",
+        "PS_2Y": "市销率-26E",
+        "PS_3Y": "市销率-27E",
+        "PS_TTM": "市销率-TTM",
+        "QYBS": "EV/EBITDA-24A",
+        "REPORT_DATE": "报告日期",
+        "SECUCODE": "证券代码",
+        "SECURITY_CODE": "行业标识",
+        "TOTAL_COUNT": "证券数量",
+        "PAIMING": "排名"
+    }
+    temp_df.rename(columns=field_mapping_result, inplace=True)
+    temp_df = temp_df[[
+        "排名",
+        "代码",
+        "简称",
+        "PEG",
+        "市盈率-TTM",
+        "市盈率-25E",
+        "市盈率-26E",
+        "市盈率-27E",
+        "市销率-24A",
+        "市销率-TTM",
+        "市销率-25E",
+        "市销率-26E",
+        "市销率-27E",
+        "市净率-24A",
+        "市净率-MRQ",
+        "市现率1-24A",
+        "市现率1-TTM",
+        "市现率2-24A",
+        "市现率2-TTM",
+        "EV/EBITDA-24A",
+    ]]
+    temp_df = pd.concat([temp_df.iloc[-1:], temp_df.iloc[:-1]]).reset_index(drop=True)
+    temp_df['排名'] = temp_df['排名'].astype(str)
+    temp_df.iloc[0, 0] = f"{temp_df.iloc[0, 0]}/{data_json['result']['data'][0]['TOTAL_COUNT']}"
+    row1 = temp_df.iloc[1].copy()
+    row2 = temp_df.iloc[2].copy()
+    # 交换位置
+    temp_df.iloc[1] = row2
+    temp_df.iloc[2] = row1
+>>>>>>> upstream/main
     return temp_df
 
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 """
-Date: 2025/10/28 15:00
+Date: 2025/12/12 15:00
 Desc: 股票配置文件
 """
 
-xq_a_token = "144a75f00fac53d1ebae9a21261446d57d4443d1"
+xq_a_token = "a5cd2fa0820cd6e296940c4fbb3857c63726317f"
 
 # zh-sina-kcb
 zh_sina_kcb_stock_url = (
@@ -60,6 +60,9 @@ zh_sina_a_stock_amount_url = (
 )
 zh_sina_a_stock_hfq_url = "https://finance.sina.com.cn/realstock/company/{}/hfq.js"
 zh_sina_a_stock_qfq_url = "https://finance.sina.com.cn/realstock/company/{}/qfq.js"
+zh_sina_a_stock_amount_page_url = (
+    "https://money.finance.sina.com.cn/corp/go.php/vCI_StockStructureHistory/stockid/{}/stocktype/TotalStock.phtml"
+)
 
 # us-sina
 us_sina_stock_hist_qfq_url = (

@@ -23,8 +23,12 @@ def crypto_bitcoin_hold_report():
         "X-App-Id": "lnFP5lxse24wPgtY",
         "X-Version": "1.0.0",
     }
+<<<<<<< HEAD
     r = requests_get(url, headers=headers)
 
+=======
+    r = requests.get(url, headers=headers)
+>>>>>>> upstream/main
     data_json = r.json()
     temp_df = pd.DataFrame(data_json["data"]["values"])
     temp_df.columns = [

@@ -1,5 +1,6 @@
 aiohttp>=3.11.13
 beautifulsoup4>=4.9.1
+curl_cffi>=0.13.0
 lxml>=4.2.1
 pandas>=0.25
 requests>=2.22.0
@@ -12,5 +13,9 @@ jsonpath>=0.82
 tabulate>=0.8.6
 decorator>=4.4.2
 mini-racer>=0.12.4
+<<<<<<< HEAD
 nest_asyncio>=1.6.0
 fake_useragent>=2.2.0
+=======
+nest_asyncio>=1.6.0
+>>>>>>> upstream/main
